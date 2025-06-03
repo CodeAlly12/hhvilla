@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover our exclusive beachfront apartments at HH Villa Malindi. Four modern apartments with direct beach access, perfect for extended stays or investment opportunities. Choose from 1-bedroom or 2-bedroom units with full amenities in Malindi, Kenya.">
+    <title>Beach Access Apartments - HH Villa Malindi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        :root {
+            --primary-color: #57561e;
+            --secondary-color: #092922;
+            --text-color: #333;
+            --text-light: #777;
+            --white: #fff;
+            --off-white: #f5f5f5;
+            --light-gray: #eaeaea;
+            --dark-overlay: rgba(9, 41, 34, 0.7);
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --border-radius: 4px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after,
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .book-now-button a {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .book-now-button a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Mobile Navigation */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 992px) {
+            .nav-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 50px 0;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            .book-now-button {
+                margin-top: 20px;
+            }
+        }
+        
+        /* Hero Section */
+        .apartments-hero {
+            height: 80vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+            overflow: hidden;
+        }
+        
+        .apartments-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/beachview.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+        }
+        
+        .beach-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .header-line {
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+        }
+        
+        /* Apartments Overview */
+        .apartments-overview {
+            padding: 100px 0;
+        }
+        
+        .overview-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .overview-text h2 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .overview-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .overview-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .overview-image img {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Apartments Grid */
+        .apartments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .apartment-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .apartment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .apartment-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .apartment-1 { background-image: url('images/twobed1.jpg'); }
+        .apartment-2 { background-image: url('images/twobed2.jpg'); }
+        .apartment-3 { background-image: url('images/onebed1.jpg'); }
+        .apartment-4 { background-image: url('images/onebed2.jpg'); }
+        
+        .apartment-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .for-sale-badge {
+            background-color: #e74c3c;
+        }
+        
+        .beach-access-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .apartment-details {
+            padding: 25px;
+        }
+        
+        .apartment-details h3 {
+            font-size: 24px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .apartment-details p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .apartment-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-color);
+        }
+        
+        .feature-item i {
+            color: var(--primary-color);
+            margin-right: 8px;
+            width: 16px;
+        }
+        
+        .apartment-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background-color: var(--dark-overlay);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .btn-white {
+            background-color: var(--white);
+            color: var(--secondary-color);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-white:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .btn-outline-white {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-white:hover {
+            background-color: var(--white);
+            color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links h3,
+        .footer-contact h3,
+        .footer-newsletter h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after,
+        .footer-contact h3:after,
+        .footer-newsletter h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-contact p i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 12px 15px;
+            color: var(--white);
+            border-radius: 30px 0 0 30px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--white);
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .overview-content {
+                flex-direction: column;
+            }
+            
+            .apartments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 42px;
+                letter-spacing: 3px;
+            }
+            
+            .apartment-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .apartment-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <div class="logo">HH•VILLA</div>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#accommodation" class="active">Accommodation</a></li>
+                <li><a href="index.html#SPA">SPA</a></li>
+                <li><a href="index.html#Reviews">Reviews</a></li>
+                <li><a href="index.html#Cta">Contact</a></li>
+                
+                <div class="book-now-button">
+                    <a href="#cta">Inquire Now</a>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="apartments-hero">
+        <div class="hero-content">
+            <div class="beach-badge">Direct Beach Access</div>
+            <h1>Beach Apartments</h1>
+            <p>Four exclusive apartments with direct beach access, perfect for extended stays or investment opportunities in paradise</p>
+        </div>
+    </section>
+
+    <!-- Apartments Overview -->
+    <section class="apartments-overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Beachfront Living</span>
+                <h2 class="section-title">Modern Apartments with Ocean Access</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Your Gateway to Coastal Living</h2>
+                    <p>Discover our exclusive collection of four beachfront apartments, each offering direct access to Malindi's pristine coastline. These modern units combine contemporary comfort with traditional coastal charm, making them perfect for extended stays, vacation rentals, or permanent residence.</p>
+                    <p>Whether you're looking for a romantic one-bedroom retreat or a spacious two-bedroom family unit, our apartments offer the ultimate in beachfront living. Each apartment features modern amenities, private terraces, and unobstructed views of the Indian Ocean.</p>
+                    <p>Our two-bedroom apartments are available for extended rental stays, while our one-bedroom studios offer both rental and purchase opportunities for those seeking to own a piece of Malindi's coveted coastline.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="images/beach-apartments.jpg" alt="Beach Apartment View">
+                </div>
+            </div>
+
+            <!-- Apartments Grid -->
+            <div class="apartments-grid">
+                <!-- Apartment 1 - 2 Bedroom -->
+                <div class="apartment-card">
+                    <div class="apartment-image apartment-1">
+                        <div class="beach-access-badge">Beach Access</div>
+                        <div class="apartment-badge">2 Bedroom</div>
+                    </div>
+                    <div class="apartment-details">
+                        <h3>Sunset Villa Apartment A</h3>
+                        <p>Spacious two-bedroom apartment with panoramic ocean views, full kitchen, and private balcony overlooking the beach.</p>
+                        <div class="apartment-features">
+                            <div class="feature-item">
+                                <i class="fas fa-bed"></i>
+                                <span>2 Bedrooms</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-bath"></i>
+                                <span>2 Bathrooms</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Up to 4 Guests</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>Full Kitchen</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-waves"></i>
+                                <span>Direct Beach Access</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-balcony"></i>
+                                <span>Ocean View Balcony</span>
+                            </div>
+                        </div>
+                        <div class="apartment-actions">
+                            <a href="#cta" class="btn-primary" style="width: 100%;">Book Stay</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apartment 2 - 2 Bedroom -->
+                <div class="apartment-card">
+                    <div class="apartment-image apartment-2">
+                        <div class="beach-access-badge">Beach Access</div>
+                        <div class="apartment-badge">2 Bedroom</div>
+                    </div>
+                    <div class="apartment-details">
+                        <h3>Sunset Villa Apartment B</h3>
+                        <p>Elegant two-bedroom unit with modern amenities, separate living area, and stunning sunrise views from the east-facing terrace.</p>
+                        <div class="apartment-features">
+                            <div class="feature-item">
+                                <i class="fas fa-bed"></i>
+                                <span>2 Bedrooms</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-bath"></i>
+                                <span>2 Bathrooms</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Up to 4 Guests</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>Full Kitchen</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-waves"></i>
+                                <span>Direct Beach Access</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-sun"></i>
+                                <span>Sunrise Views</span>
+                            </div>
+                        </div>
+                        <div class="apartment-actions">
+                            <a href="#cta" class="btn-primary" style="width: 100%;">Book Stay</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apartment 3 - 1 Bedroom -->
+                <div class="apartment-card">
+                    <div class="apartment-image apartment-3">
+                        <div class="beach-access-badge">Beach Access</div>
+                        <div class="apartment-badge">1 Bedroom</div>
+                    </div>
+                    <div class="apartment-details">
+                        <h3>Ocean Breeze Studio A</h3>
+                        <p>Intimate one-bedroom apartment perfect for couples, featuring open-plan living, kitchenette, and private beach-facing patio.</p>
+                        <div class="apartment-features">
+                            <div class="feature-item">
+                                <i class="fas fa-bed"></i>
+                                <span>1 Bedroom</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-bath"></i>
+                                <span>1 Bathroom</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Up to 2 Guests</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>Kitchenette</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-waves"></i>
+                                <span>Direct Beach Access</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-chair"></i>
+                                <span>Private Patio</span>
+                            </div>
+                        </div>
+                        <div class="apartment-actions">
+                            <a href="#cta" class="btn-primary">Book Stay</a>
+                            <a href="#cta" class="btn-outline">Purchase Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apartment 4 - 1 Bedroom -->
+                <div class="apartment-card">
+                    <div class="apartment-image apartment-4">
+                        <div class="beach-access-badge">Beach Access</div>
+                        <div class="apartment-badge">1 Bedroom</div>
+                    </div>
+                    <div class="apartment-details">
+                        <h3>Ocean Breeze Studio B</h3>
+                        <p>Cozy one-bedroom retreat with minimalist design, compact efficiency, and steps away from the pristine beach.</p>
+                        <div class="apartment-features">
+                            <div class="feature-item">
+                                <i class="fas fa-bed"></i>
+                                <span>1 Bedroom</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-bath"></i>
+                                <span>1 Bathroom</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Up to 2 Guests</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>Kitchenette</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-waves"></i>
+                                <span>Direct Beach Access</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-leaf"></i>
+                                <span>Garden Views</span>
+                            </div>
+                        </div>
+                        <div class="apartment-actions">
+                            <a href="#cta" class="btn-primary">Book Stay</a>
+                            <a href="#cta" class="btn-outline">Purchase Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Apartment Features</span>
+                <h2 class="section-title">Why Choose Our Beach Apartments</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-waves"></i>
+                    </div>
+                    <h3>Direct Beach Access</h3>
+                    <p>Step directly from your apartment onto the pristine sands of Malindi beach. No crowded pathways or long walks to the ocean.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Modern Amenities</h3>
+                    <p>Each apartment features contemporary furnishings, full kitchens or kitchenettes, high-speed Wi-Fi, and all modern conveniences.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Extended Stay Options</h3>
+                    <p>Perfect for longer stays with weekly and monthly rates available. Ideal for remote workers, retirees, or extended vacation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Investment Opportunity</h3>
+                    <p>Purchase your own one-bedroom studio paradise. These units offer excellent rental potential and long-term appreciation opportunities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>24/7 Security</h3>
+                    <p>Comprehensive security system with round-the-clock monitoring ensures your safety and peace of mind at all times.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>Concierge Services</h3>
+                    <p>Full concierge services including housekeeping, local tours, restaurant reservations, and transportation arrangements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Experience Beachfront Living?</h2>
+                <p>Whether you're planning an extended stay in our spacious two-bedroom apartments or looking to invest in our one-bedroom studios, our beach apartments offer the perfect opportunity. Contact us to learn more about availability and pricing.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#book" class="btn-white">Book Your Stay</a>
+                    <a href="index.html#Cta" class="btn-outline-white">Studio Purchase Inquiry</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HH ✦ VILLA</h2>
+                    <p>Luxury coastal living in Malindi, Kenya</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#accommodation">Accommodation</a></li>
+                        <li><a href="index.html#SPA">Spa</a></li>
+                        <li><a href="index.html#Reviews">Reviews</a></li>
+                        <li><a href="index.html#Cta">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Malindi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 715-384-796</p>
+                    <p><i class="fas fa-envelope"></i> info@hhvilla.me</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/company/hh-villa/?viewAsMember=true"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/hhvilla.malindi?igsh=MXFwa2F2bjZtemZueA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/uNr5v8xTcMN2RojA9"><i class="fa-brands fa-google"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HH Villa Malindi. All Rights Reserved. | Designed by Esther Alitwala</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

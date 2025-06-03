@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="description" content="Book our spacious 3-bedroom Main House at HH Villa Malindi. This luxurious accommodation features en-suite bathrooms, full kitchen, and living area in traditional Swahili style. Ideal for families and groups up to 6 adults, with pool access and tropical garden views.">
+    <title>Main House - HH Villa Malindi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        :root {
+      --primary-color: #57561e;
+      --secondary-color: #092922;
+      --text-color: #333;
+      --text-light: #777;
+      --white: #fff;
+      --off-white: #f5f5f5;
+      --light-gray: #eaeaea;
+      --dark-overlay: rgba(9, 41, 34, 0.7);
+      --transition: all 0.3s ease;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --border-radius: 4px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+         background: var(--secondary-color);
+         padding: 15px 0;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after,
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .book-now-button a {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .book-now-button a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Mobile Navigation Styles */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        /* Media Query for Mobile Navigation */
+        @media (max-width: 992px) {
+            .nav-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 50px 0;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            .book-now-button {
+                margin-top: 20px;
+            }
+            
+            .navbar-container {
+                position: relative;
+            }
+            
+            /* Add overlay when menu is open */
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                visibility: hidden;
+                z-index: 999;
+                transition: all 0.3s ease;
+            }
+            
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        /* Hero Section */
+        .house-hero {
+            height: 80vh;
+            background: linear-gradient(135deg, rgba(87, 86, 30, 0.6) 0%, rgba(9, 41, 34, 0.6) 100%), url('images/main-house-hero.jpg');
+
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+        
+        .house-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .beach-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .header-line {
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+        }
+        
+        /* House Overview */
+        .house-overview {
+            padding: 100px 0;
+        }
+        
+        .overview-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .overview-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .overview-image img {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .overview-text h2 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .overview-text p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .amenity-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .amenity-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .booking-section .section-subtitle {
+            color: var(--primary-color);
+        }
+        
+        .booking-section .section-title {
+            color: var(--white);
+        }
+        
+        .booking-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .booking-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .booking-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .booking-option {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 10px;
+            flex: 1;
+            max-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .booking-option h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .booking-option .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .booking-option .price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links h3,
+        .footer-contact h3,
+        .footer-newsletter h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after,
+        .footer-contact h3:after,
+        .footer-newsletter h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-contact p i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 12px 15px;
+            color: var(--white);
+            border-radius: 30px 0 0 30px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--white);
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .overview-content {
+                flex-direction: column;
+            }
+            
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .booking-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-container,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .amenities-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <div class="logo">HH ✦ VILLA</div>
+            
+            <!-- Mobile navigation toggle button -->
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#accommodation" class="active">Accommodation</a></li>
+                <!-- <li><a href="index.html#ocean-trip">Ocean flavours</a></li> -->
+                <li><a href="index.html#SPA">SPA</a></li>
+                <li><a href="index.html#Reviews">Reviews</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <div class="book-now-button">
+                    <a href="#booking">Book Now</a>
+                </div>
+            </ul>
+            
+            <!-- Mobile menu overlay -->
+            <div class="menu-overlay"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="house-hero">
+        <div class="hero-content">
+            <div class="beach-badge">Family Villa • Sleeps 6</div>
+            <h1>Main House</h1>
+            <p>Experience luxury and comfort in our spacious main house featuring three bedrooms with en-suite bathrooms</p>
+        </div>
+    </section>
+
+    <!-- House Overview -->
+    <section class="house-overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Luxury Living</span>
+                <h2 class="section-title">Elegant Coastal Living</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="overview-content">
+                <div class="overview-image">
+                    <img src="images/main house.jpg" alt="Main House Interior">
+                </div>
+                <div class="overview-text">
+                    <h2>Spacious Family Accommodation</h2>
+                    <p>Our beautifully designed main house offers a perfect blend of luxury and comfort for families and groups seeking a memorable coastal getaway. With three spacious bedrooms, with its en-suite Bathrooms, a generous living area, and a fully equipped kitchen, the Main House provides everything you need for a relaxing stay.</p>
+                    <p>The house can comfortably accommodate 6 adults and up to three additional children (additional charges apply for extra children). We welcome pets upon request, with a separate pet agreement form to be completed prior to arrival.</p>
+                    <p>Designed with traditional Swahili architectural elements while incorporating modern amenities, the Main House offers a truly authentic yet comfortable coastal living experience. Enjoy the cool breeze flowing through the  open windows or relax by the swimming pool surrounded by lush tropical gardens.</p>
+                    
+                    <div class="amenities-list">
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <span>3 Bedrooms</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-shower"></i>
+                            </div>
+                            <span>2 Bathrooms</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <span>Accommodates 6 Adults</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <span>Space for 3 Children</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-paw"></i>
+                            </div>
+                            <span>Pet-Friendly</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <span>Full Kitchen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features-grid">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">House Features</span>
+                <h2 class="section-title">What Makes Our Main House Special</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h3>Private Bedrooms</h3>
+                    <p>Three spacious bedrooms, each with its own private en-suite bathroom for complete comfort and privacy.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Living Area</h3>
+                    <p>Spacious common living area perfect for family gatherings, relaxation, and entertainment.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Full Kitchen</h3>
+                    <p>Fully equipped kitchen with modern appliances, allowing you to prepare meals just like at home.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3>Pet-Friendly</h3>
+                    <p>We welcome your furry family members upon request, with a simple pet agreement process.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Pool Access</h3>
+                    <p>Full access to our serene swimming pool, perfect for cooling off during hot coastal days.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>24/7 Security</h3>
+                    <p>Round-the-clock security ensures your safety and peace of mind throughout your stay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Photo Gallery</span>
+                <h2 class="section-title">Experience Our Main House</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/lounge.jpg" alt="Main House Bedroom">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/main-dinning.jpg" alt="Main House Bathroom">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/main-kitchen.jpg" alt="Main House Kitchen">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/seat.jpg" alt="Main House Living Area">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/queen.jpg" alt="Main House Exterior">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/main.garden.jpg" alt="Main House Garden View">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-subtitle">Book Your Stay</span>
+                <h2 class="section-title">Reserve The Main House</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="booking-content">
+                <p>Our Main House can be booked for your family or group getaway. Choose the option that best suits your needs and enjoy the perfect coastal experience.</p>
+                
+                <div class="booking-options">
+                    <div class="booking-option">
+                        <h3>Nightly Rate</h3>
+                        <div class="price">$130 <span>per night</span></div>
+                        <p>Perfect for families or groups looking for a luxurious coastal retreat.</p>
+                        <ul>
+                            <li>Accommodates 6 adults</li>
+                            <li>Up to 3 children (extra charge if exceed)</li>
+                            <li>Self-catering facilities</li>
+                        </ul>
+                        <a href="booking.html?type=main-house-nightly&price=180&title=Main%20House%20-%20Nightly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+
+                    </div>
+                    
+                    <div class="booking-option">
+                        <h3>Weekly Stay</h3>
+                        <div class="price">$910 <span>per week</span></div>
+                        <p>Save when you stay longer and truly experience the coastal lifestyle.</p>
+                        <ul>
+                            <li>7 nights accommodation</li>
+                            <li>Complimentary welcome basket</li>
+                            
+                        </ul>
+                        <a href="booking.html?type=main-house-weekly&price=1120&title=Main%20House%20-%20Weekly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+
+    <section class="faq-section" id="main-house-faqs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Frequently Asked Questions</span>
+                <h2 class="section-title">Main House FAQs</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>How many people can the Main House accommodate?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">The Main House comfortably accommodates 6 adults in three spacious bedrooms. Additionally, we can accommodate up to 3 children with extra bedding arrangements (additional charges apply for children above 18 years). Each bedroom has its own en-suite bathroom for privacy and convenience during your stay.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>What kitchen facilities are available in the Main House?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">The Main House features a fully-equipped kitchen with modern appliances including a refrigerator, gas stove, microwave, coffee maker, water dispenser, and essential cookware and utensils. There's ample counter space for meal preparation and a dining area that can seat up to 8 people. Guests can prepare their own meals or request a private chef service for an additional fee.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Are meals included with the Main House booking?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">No, meals are not included with the Main House booking. The house is self-catering with a fully equipped kitchen for meal preparation. Guests are responsible for their own meals during their stay. Upon request, we can arrange for a private chef to prepare local and international dishes for an additional charge, or recommend nearby restaurants and food delivery services.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>What is your pet policy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">We welcome pets upon request. If you wish to bring your pet, please let us know at the time of booking. You will need to complete a separate pet agreement form prior to your arrival, and certain conditions may apply. We ask that pets are well-behaved, do not disturb other guests, and are kept off furniture and beds. Additional cleaning fees may apply.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Is the Main House air-conditioned?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">The Main House features stand fans in all rooms and large open windows designed for natural ventilation with the coastal breeze. The traditional Swahili architectural design helps maintain comfortable temperatures throughout the house. The high ceilings, makuti (palm leaf) roofing, and coral stone walls naturally regulate indoor temperatures even during warmer months.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Is there additional cost for extra guests?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, there is an additional charge for guests beyond the standard 6-person occupancy. Children over 18 years are considered adults for occupancy purposes. Please inquire about our current rates for extra guests when making your booking. We recommend specifying the exact number of guests (both adults and children) at the time of booking to ensure proper arrangements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     
+    <!-- <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Frequently Asked Questions</span>
+                <h2 class="section-title">Common Questions</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How many people can the Main House accommodate?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Main House comfortably accommodates 6 adults in the three bedrooms. Additionally, we can accommodate up to 3 children with extra bedding arrangements (additional charges apply for extra children from 18years).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are meals included with the Main House booking?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, meals are not included with the Main House booking. The house is self-catering with a fully equipped kitchen for meal preparation. Guests are responsible for their own meals during their stay.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is your pet policy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We welcome pets upon request. If you wish to bring your pet, please let us know at the time of booking. You will need to complete a separate pet agreement form prior to your arrival, and certain conditions may apply.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is the Main House air-conditioned?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Main House features stand fans in all rooms and large open windows designed for natural ventilation with the coastal breeze. The architectural design helps maintain comfortable temperatures throughout the house.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there additional cost for Extra Guests?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, there is an additional charge for extra beyond the standard 6-person occupancy. Please inquire about our current rates for extra guests when making your booking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- Footer would be here, but omitted for brevity -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HH ✦ VILLA</h2>
+                    <p>Luxury coastal living in Malindi, Kenya</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#accommodation">Accommodation</a></li>
+                        <!-- <li><a href="#ocean-trip">Ocean Trip</a></li> -->
+                        <li><a href="#Spa">spa</a></li>
+                        <li><a href="index.html#Reviews">Reviews</a></li>
+                        <li><a href="#Cta">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Malindi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 715-384-796
+                    <p><i class="fas fa-envelope"></i> info@hhvilla.me</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/company/hh-villa/?viewAsMember=true"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/hhvilla.malindi?igsh=MXFwa2F2bjZtemZueA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/uNr5v8xTcMN2RojA9"><i class="fa-brands fa-google"></i></a>
+                        
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HH Villa Malindi. All Rights Reserved.
+                    &copy; Designed by Esther Alitwala
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple toggle for FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    item.querySelector('i').classList.remove('fa-chevron-up');
+                    item.querySelector('i').classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    item.querySelector('i').classList.remove('fa-chevron-down');
+                    item.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+        
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        navToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close mobile menu when clicking on overlay
+        menuOverlay.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>

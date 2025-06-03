@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rejuvenate at HH Villa Malindi's Garden Spa. Experience traditional, Herbal massege,Swahili massages, aromatic treatments, and wellness packages in our tranquil tropical setting. From couples treatments to beauty services, our skilled therapists provide authentic coastal relaxation experiences.">
+    <title>Garden Spa - HH Villa Malindi</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+   
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.4s ease;
+        background-color: transparent; /* Initially transparent */
+    }
+
+    .navbar-scrolled {
+        background-color: #19362d; /* Your brand green color */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-scrolled .logo {
+        font-size: 1.5rem; /* Slightly smaller logo when scrolled */
+    }
+
+    .navbar-scrolled .navbar-container {
+        padding: 10px 0; /* Reduced padding when scrolled */
+    }
+
+    .navbar .logo,
+    .navbar .navbar-container,
+    .navbar .nav-menu a,
+    .navbar .book-now-button a {
+        transition: all 0.3s ease;
+    }
+
+    .navbar-scrolled .nav-menu a {
+        color: #fff;
+    }
+
+    .navbar-scrolled .book-now-button a {
+        background-color: #fff;
+        color: #19362d;
+    }
+
+    /* Hero Section */
+    .spa-hero {
+        position: relative;
+        height: 80vh;
+        min-height: 600px;
+        background-image: url('images/candles.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+
+    .spa-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(25, 54, 45, 0.01);
+    }
+
+    .spa-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 850px;
+        padding: 0 20px;
+    }
+
+    .spa-hero-text {
+        background-color: rgba(25, 54, 45, 0.4);
+        padding: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.141);
+        border-radius: 4%;
+        backdrop-filter: blur(5px);
+    }
+
+    .spa-hero .subtitle {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .spa-hero .title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 60px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .spa-hero .description {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Spa Introduction Section */
+    .spa-intro {
+        padding: 100px 0;
+        background-color: #fff;
+    }
+
+    .spa-intro-content {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .spa-intro-text {
+        flex: 1;
+        position: relative;
+    }
+
+    .spa-intro-text p {
+        margin-bottom: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .spa-decorative-element {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        bottom: -30px;
+        left: -30px;
+        opacity: 0.2;
+    }
+
+    .spa-intro-image {
+        flex: 1;
+        position: relative;
+    }
+
+    .spa-intro-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .spa-intro-image .experience-badge {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #19362d;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .experience-badge .text {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    /* Spa Services Section */
+    .spa-services {
+        padding: 100px 0;
+        background-color: #f8f8f8;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .service-card {
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        position: relative;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card.featured {
+        background-color: #19362d;
+        color: #fff;
+    }
+
+    .service-icon {
+        font-size: 40px;
+        color: #19362d;
+        margin-bottom: 20px;
+    }
+
+    .service-card.featured .service-icon {
+        color: #fff;
+    }
+
+    .service-card h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .service-card p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        color: #666;
+    }
+
+    .service-card.featured p {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .service-details {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+    }
+
+    .service-card.featured .service-details {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .featured-tag {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        color: #19362d;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 3px;
+    }
+
+    .btn-outline {
+        display: inline-block;
+        padding: 10px 25px;
+        background-color: transparent;
+        border: 1px solid #19362d;
+        color: #19362d;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .btn-outline:hover {
+        background-color: #19362d;
+        color: #fff;
+    }
+
+    .service-card.featured .btn-outline {
+        border-color: #fff;
+        color: #fff;
+    }
+
+    .service-card.featured .btn-outline:hover {
+        background-color: #fff;
+        color: #19362d;
+    }
+
+    /* Special Services List Styling */
+    .service-list {
+        margin-top: 20px;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .service-list li {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #555;
+    }
+
+    .service-list li:last-child {
+        border-bottom: none;
+    }
+
+    .service-list span {
+        font-weight: 500;
+        color: #19362d;
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+        padding: 100px 0;
+        background-color: #fff;
+    }
+
+    .benefits-content {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        margin-top: 50px;
+    }
+
+    .benefits-image {
+        flex: 1;
+    }
+
+    .benefits-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefits-list {
+        flex: 1;
+    }
+
+    .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 30px;
+    }
+
+    .benefit-icon {
+        font-size: 24px;
+        color: #19362d;
+        margin-right: 20px;
+        background-color: rgba(25, 54, 45, 0.1);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .benefit-text h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #19362d;
+    }
+
+    .benefit-text p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #666;
+    }
+
+    /* Spa Packages Section */
+    .spa-packages {
+        padding: 100px 0;
+        background-color: #f8f8f8;
+    }
+
+    .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .package-card {
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        position: relative;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .package-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .package-card.featured {
+        border: 2px solid #19362d;
+    }
+
+    .featured-badge {
+        position: absolute;
+        top: -5px;
+        right: 15px;
+        background-color: #19362d;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        font-weight: 900;
+        padding: 5px 15px;
+        border-radius: 20px;
+        z-index: 1;
+    }
+
+    .package-header {
+        background-color: #19362d;
+        color: #fff;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .package-header h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .package-price {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .package-content {
+        padding: 30px;
+    }
+
+    .package-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 25px 0;
+    }
+
+    .package-features li {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    .package-features li i {
+        color: #19362d;
+        margin-right: 10px;
+    }
+
+    .package-content p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    .btn-primary {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #19362d;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border-radius: 3px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #122b23;
+    }
+
+    /* Updated Booking Widget */
+    .booking-widget {
+        padding: 80px 0;
+        background-color: #f8f8f8;
+    }
+
+    .booking-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .booking-header h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 36px;
+        font-weight: 600;
+        color: #19362d;
+        margin-bottom: 15px;
+    }
+
+    .booking-header p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        color: #666;
+    }
+
+    .booking-form {
+        background-color: #fff;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 40px;
+        border-radius: 5px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .booking-input {
+        width: calc(25% - 15px);
+        margin-bottom: 20px;
+    }
+
+    .booking-input label {
+        display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #19362d;
+    }
+
+    .booking-input input,
+    .booking-input select {
+        width: 100%;
+        padding: 12px 15px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        background-color: #f9f9f9;
+    }
+
+    .check-availability {
+        width: 100%;
+        padding: 15px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background-color: #021b0ac5; /* WhatsApp Green */
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .check-availability:hover {
+        background-color: #287405;
+    }
+
+    .check-availability i {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    /* Confirmation Message */
+    .booking-confirmation {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+        margin-top: 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .booking-confirmation.show {
+        display: block;
+    }
+
+    /* Animation for service cards, benefit items, and package cards */
+    .service-card, .benefit-item, .package-card {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .service-card.visible, .benefit-item.visible, .package-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+       /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+        }
+        
+    
+
+    /* Responsive Styles */
+    @media screen and (max-width: 1024px) {
+        .spa-intro-content,
+        .benefits-content {
+            flex-direction: column;
+        }
+        
+        .services-grid,
+        .packages-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .booking-input {
+            width: calc(50% - 10px);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .spa-hero .title {
+            font-size: 42px;
+        }
+        
+        .services-grid,
+        .packages-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .booking-input {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .spa-hero-text {
+            padding: 25px;
+        }
+        
+        .spa-hero .subtitle {
+            font-size: 16px;
+        }
+        
+        .spa-hero .title {
+            font-size: 32px;
+        }
+        
+        .spa-hero .description {
+            font-size: 16px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-logo">HH VLLA ✦ SPA ✦ TRAVEL ✦ </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">HH•VILLA</div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#accommodation">Accommodation</a></li>
+                <li><a href="#" class="active">SPA</a></li>
+                <li><a href="index.html#Reviews">Reviews</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="book-now-button">
+                <a href="#book-spa">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="spa-hero">
+        <div class="spa-hero-content">
+            <div class="spa-hero-text">
+                <h4 class="subtitle">Rejuvenate at Our</h4>
+                <h1 class="title">Garden Spa</h1>
+                <p class="description">Experience tranquility and relaxation in our tropical paradise</p>
+                <div class="hero-buttons">
+                    <a href="#spa-services" class="btn-primary">Our Services</a>
+                    <a href="#book-spa" class="btn-secondary">Book Session</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spa Introduction -->
+    <section class="spa-intro">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Welcome to Our</span>
+                <h2 class="section-title">Sanctuary of Relaxation</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="spa-intro-content">
+                <div class="spa-intro-text">
+                    <p>Nestled within the lush tropical gardens of HH Villa Malindi, our Garden Spa offers a serene escape from the everyday world. Surrounded by the gentle sounds of nature and the fragrance of exotic blooms, our dedicated spa area invites you to embark on a journey of complete relaxation and rejuvenation.</p>
+                    
+                    <p>Our skilled therapists combine traditional techniques with modern wellness approaches to deliver truly transformative experiences that harmonize your mind, body, and spirit.</p>
+                    
+                    <p>Whether you seek relief from tension, a moment of peaceful solitude, or a complete wellness journey, our Garden Spa provides the perfect setting for your personal restoration.</p>
+                    
+                    <div class="spa-decorative-element">
+                        <img src="images/spa-element.png" alt="Decorative Element">
+                    </div>
+                </div>
+                
+                <div class="spa-intro-image">
+                    <img src="images/candles.jpg" alt="Spa Ambiance">
+                    <div class="experience-badge">
+                        <span class="text">rejuvenation</span>
+                        <span class="text">relaxation </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spa Services Section -->
+    <section class="spa-services" id="spa-services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Offerings</span>
+                <h2 class="section-title">Spa Services</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Traditional Swahili Massage</h3>
+                    <p>Experience authentic coastal healing techniques that have been passed down through generations, combining deep pressure and gentle stretching.</p>
+                    <div class="service-details">
+                        <span class="duration"><i class="far fa-clock"></i> 60 / 90 min</span>
+                        <span class="price">From $45</span>
+                    </div>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card featured">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Aromatic Ocean Ritual</h3>
+                    <p>Our signature treatment combines a full-body massage with local aromatic oils and a gentle sea salt scrub to revitalize your skin and senses.</p>
+                    <div class="service-details">
+                        <span class="duration"><i class="far fa-clock"></i> 120 min</span>
+                        <span class="price">From $85</span>
+                    </div>
+                    <div class="featured-tag">Most Popular</div>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-hands-asl-interpreting"></i>
+                    </div>
+                    <h3>Head & Shoulder Relief</h3>
+                    <p>Target tension in your upper body with this focused treatment that relieves stress and improves circulation to your head, neck, and shoulders.</p>
+                    <div class="service-details">
+                        <span class="duration"><i class="far fa-clock"></i> 45 min</span>
+                        <span class="price">From $35</span>
+                    </div>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Coconut Body Scrub</h3>
+                    <p>Exfoliate and nourish your skin with this refreshing treatment using locally-sourced coconut and essential oils to leave your skin glowing.</p>
+                    <div class="service-details">
+                        <span class="duration"><i class="far fa-clock"></i> 60 min</span>
+                        <span class="price">From $40</span>
+                    </div>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Couples Relaxation</h3>
+                    <p>Share a peaceful experience with a loved one as you both receive side-by-side massages in our serene garden setting.</p>
+                    <div class="service-details">
+                        <span class="duration"><i class="far fa-clock"></i> 90 min</span>
+                        <span class="price">From $110</span>
+                    </div>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hot Stone Therapy</h3>
+                    <p>Smooth, heated stones are placed on key points of your body to melt away tension and improve blood circulation.</p>
+                    <div class="service-details">
+                        <span class="duration"><i class="far fa-clock"></i> 90 min</span>
+                        <span class="price">From $60</span>
+                    </div>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div>
+
+                <!--  Beauty & Wellness Services Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Beauty & Wellness Services</h3>
+                    <p>Enhance your natural beauty and wellness with our comprehensive range of professional treatments designed for your complete care.</p>
+                    <ul class="service-list">
+                        <li>underarms Waxing<span>$10</span></li>
+                        <li>Brazilian <span>$25</span></li>
+                        <li>Bikini line <span>$20</span></li>
+                        <li>full legs waxing <span>$15</span></li>
+                        <li>Hair Wash & Blow Dry <span> $25</span></li>
+                        <li>Luxury Pedicure <span> $30</span></li>
+                        <li>Luxury Manicure <span>$25</span></li>
+                        
+                    </ul>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div> 
+                
+                <!-- Holistic Spa Therapies -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-sun"></i>
+                        <!-- Spa icon for wellness theme -->
+                    </div>
+                    <h3>Holistic Therapies</h3>
+                    <p>Rejuvenate with our natural treatments blending ancient techniques and modern relaxation.</p>
+                    <ul class="service-list">
+                        <li>Herbal Compress Massage (60 min) <span>$75</span></li>
+                        <li>Swedish Relaxation Facial <span>$60</span></li>
+                        <li>Warm Candle Oil Massage <span>$85</span></li>
+
+                        <li>Lavender-Infused Scalp Treatment <span>$35</span></li>
+                    </ul>
+                    <a href="#book-spa" class="btn-outline">Book Now</a>
+                </div>
+
+
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Why Choose Us</span>
+                <h2 class="section-title">Benefits of Our Spa Treatments</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="benefits-content">
+                <div class="benefits-image">
+                    <img src="images/spa.jpg" alt="Spa Treatment">
+                </div>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Stress Reduction</h4>
+                            <p>Our treatments are designed to lower cortisol levels and promote overall relaxation, helping to reduce both mental and physical stress.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Mental Clarity</h4>
+                            <p>Experience improved focus and mental clarity as our treatments help to quiet the mind and restore your sense of balance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Improved Circulation</h4>
+                            <p>Our massage techniques enhance blood flow throughout your body, delivering oxygen and nutrients more efficiently to your tissues.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Better Sleep</h4>
+                            <p>Many guests report improved sleep quality after our treatments, thanks to reduced tension and a calmer nervous system.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Immune Support</h4>
+                            <p>Regular massages and spa treatments can support immune function through stress reduction and improved lymphatic flow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spa Package Section -->
+    <section class="spa-packages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Special Offerings</span>
+                <h2 class="section-title">Spa Packages</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Tropical Escape</h3>
+                        <div class="package-price">$120</div>
+                    </div>
+                    <div class="package-content">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 60-min Traditional Swahili Massage</li>
+                            <li><i class="fas fa-check"></i> 30-min Coconut Body Scrub</li>
+                            <li><i class="fas fa-check"></i> Refreshing Herbal Tea</li>
+                            <li><i class="fas fa-check"></i> Fresh Fruit Platter</li>
+                        </ul>
+                        <p>Perfect for those seeking a comprehensive rejuvenation experience with local flavors.</p>
+                        <a href="#book-spa" class="btn-primary">Book This Package</a>
+                    </div>
+                </div>
+                
+                <div class="package-card featured">
+                    <div class="featured-badge">Best Value</div>
+                    <div class="package-header">
+                        <h3>Ultimate Indulgence</h3>
+                        <div class="package-price">$180</div>
+                    </div>
+                    <div class="package-content">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 90-min Aromatic Ocean Ritual</li>
+                            <li><i class="fas fa-check"></i> 45-min Head & Shoulder Relief</li>
+                            <li><i class="fas fa-check"></i> Foot Reflexology Treatment</li>
+                            <li><i class="fas fa-check"></i> Refreshing Herbal Tea</li>
+                            <li><i class="fas fa-check"></i> Fresh Fruit Platter</li>
+                            <li><i class="fas fa-check"></i> Complimentary Spa Gift</li>
+                        </ul>
+                        <p>Our most comprehensive package for those seeking the ultimate spa experience.</p>
+                        <a href="#book-spa" class="btn-primary">Book This Package</a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Couples Retreat</h3>
+                        <div class="package-price">$210</div>
+                    </div>
+                    <div class="package-content">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 90-min Couples Massage</li>
+                            <li><i class="fas fa-check"></i> Refreshing Coconut Scrub for Two</li>
+                            <li><i class="fas fa-check"></i> Champagne Service</li>
+                            <li><i class="fas fa-check"></i> Tropical Fruit Platter</li>
+                            <li><i class="fas fa-check"></i> Private Garden Relaxation Time</li>
+                        </ul>
+                        <p>Share a memorable experience with your loved one in our serene spa environment.</p>
+                        <a href="#book-spa" class="btn-primary">Book This Package</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Widget -->
+    <section class="booking-widget" id="book-spa">
+        <div class="container">
+            <div class="booking-header">
+                <h2>Book Your Spa Experience</h2>
+                <p>Reserve your session and embark on a journey of relaxation</p>
+            </div>
+            <div class="booking-form" id="spa-booking-form">
+                <div class="booking-input">
+                    <label>Date</label>
+                    <input type="text" class="datepicker" id="booking-date" placeholder="Select Date">
+                </div>
+                <div class="booking-input">
+                    <label>Time</label>
+                    <select id="booking-time">
+                        <option>Morning (9:00 AM - 11:00 AM)</option>
+                        <option>Afternoon (2:00 PM - 4:00 PM)</option>
+                        <option>Evening (4:00 PM - 6:00 PM)</option>
+                    </select>
+                </div>
+                <div class="booking-input">
+                    <label>Treatment</label>
+                    <select id="booking-treatment">
+                        <option>Traditional Swahili Massage</option>
+                        <option>Aromatic Ocean Ritual</option>
+                        <option>Head & Shoulder Relief</option>
+                        <option>Coconut Body Scrub</option>
+                        <option>Couples Relaxation</option>
+                        <option>Hot Stone Therapy</option>
+                        <option>Professional Waxing</option>
+                        <option>Hair Wash & Blow Dry</option>
+                        <option>Yoni Steaming</option>
+                        <option>Pedicure & Manicure</option>
+                        <option>Tropical Escape Package</option>
+                        <option>Brazilian</option>
+                        <option>underarms  Waxing</option>
+                        <option>Bikini Line</option>
+                        <option>Ultimate Indulgence Package</option>
+                        <option>Couples Retreat Package</option>
+                        <option> full leg waxing</option>
+                        <option>Herbal Compress Massage </option>
+                        <option >Swedish Relaxation Facial</option>
+                        <option>Warm Candle Oil Massage</option>
+                        <option>Lavender-Infused Scalp Treatment</option>
+                    </select>
+                </div>
+                <div class="booking-input">
+                    <label>Number of Guests</label>
+                    <select id="booking-guests">
+                        <option>1 Person</option>
+                        <option>2 People</option>
+                    </select>
+                </div>
+                <div class="booking-input">
+                   <label>Name</label>
+                    <input type="text" id="booking-name">
+                
+                </div>
+                <a href="javascript:void(0)" onclick="bookAppointment()" class="check-availability">
+                   </i> Book Treatment
+                </a>
+            </div>
+            <div class="booking-confirmation" id="booking-confirmation">
+                <i class="fas fa-check-circle"></i> 
+                <p>Appointment request sent! We'll confirm your booking shortly via WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="spa-faqs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Spa Questions</span>
+                <h2 class="section-title">Spa FAQs</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Do I need to book spa treatments in advance?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, we recommend booking spa treatments at least 24 hours in advance to ensure availability, especially during peak season. Same-day appointments may be available, but cannot be guaranteed. You can book through our online form, WhatsApp, or by speaking with our staff during your stay.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>What makes the Traditional Swahili Massage unique?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Our Traditional Swahili Massage incorporates authentic coastal Kenyan techniques passed down through generations. It combines deep pressure, gentle stretching, and local aromatic oils made from coconut, clove, and cinnamon to release tension and improve circulation. This signature treatment offers both physical relaxation and a cultural experience unique to the Swahili coast.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>What should I wear during my spa treatment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Our therapists are professionally trained to ensure your privacy and comfort. You may undress to your level of comfort, and we provide disposable underwear for body treatments. During massages, you'll be properly draped with towels, exposing only the area being worked on. For facials and beauty treatments, we recommend wearing comfortable, loose clothing.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Are your spa products natural and locally sourced?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, we prioritize natural, locally-sourced ingredients in our spa treatments. Many of our oils, scrubs, and wraps incorporate traditional Kenyan elements like coconut oil, Swahili spices, and indigenous plants. Our body scrubs use local sea salt and organic honey. We're committed to sustainable practices that support local communities while providing authentic, effective treatments.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Can I use the spa facilities if I'm not staying at HH Villa?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, our Garden Spa welcomes outside guests. Non-residents can book individual treatments or spa packages. Advanced reservations are required for non-staying guests. We also offer day packages that include spa treatments and access to certain villa facilities like the pool for a complete wellness experience.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>What health conditions should I disclose before a treatment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Please inform us of any health conditions, allergies, injuries, or if you're pregnant before your treatment. Important conditions to disclose include high blood pressure, heart conditions, recent surgeries, skin allergies, and pregnancy. This information helps our therapists customize your treatment for safety and maximum benefit. A consultation form will be provided before your session.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HH ✦ VILLA</h2>
+                    <p>Luxury coastal living in Malindi, Kenya</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#accommodation">Accommodation</a></li>
+                        <li><a href="#spa">SPA</a></li>
+                        <li><a href="index.html#Reviews">Reviews</a></li>
+                        <li><a href="index.html#Cta">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Malindi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 715-384-796</p>
+                    <p><i class="fas fa-envelope"></i> info@hhvilla.me</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/company/hh-villa/?viewAsMember=true"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/hhvilla.malindi?igsh=MXFwa2F2bjZtemZueA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/uNr5v8xTcMN2RojA9"><i class="fa-brands fa-google"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HH Villa Malindi. All Rights Reserved.
+                    &copy; Designed by Esther Alitwala
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+          // Simple toggle for FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+          item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    item.querySelector('i').classList.remove('fa-chevron-up');
+                    item.querySelector('i').classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    item.querySelector('i').classList.remove('fa-chevron-down');
+                    item.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+     // Function to handle WhatsApp booking
+     function bookAppointment() {
+        const name = document.getElementById('booking-name').value;
+        const date = document.getElementById('booking-date').value;
+        const time = document.getElementById('booking-time').value;
+        const treatment = document.getElementById('booking-treatment').value;
+        const guests = document.getElementById('booking-guests').value;
+        
+        if (!date) {
+            alert('Please select a date for your appointment.');
+            return;
+        }
+        
+        const message = `Hello! I would like to book a spa appointment:\n\n` +
+                       `Name: ${name}\n` +
+                       `Date: ${date}\n` +
+                       `Time: ${time}\n` +
+                       `Treatment: ${treatment}\n` +
+                       `Number of guests: ${guests}\n\n` +
+                       
+                       `Please confirm availability.`;
+        
+        const whatsappURL = `https://wa.me/254715384796?text=${encodeURIComponent(message)}`;
+        
+        // Show confirmation message
+        document.getElementById('booking-confirmation').classList.add('show');
+        
+        // Open WhatsApp
+        window.open(whatsappURL, '_blank');
+        
+        // Hide confirmation message after 5 seconds
+        setTimeout(() => {
+            document.getElementById('booking-confirmation').classList.remove('show');
+        }, 5000);
+    }
+
+    // Spa Page Script
+    document.addEventListener('DOMContentLoaded', function() {
+        // Preloader
+        setTimeout(function() {
+            document.querySelector('.preloader').style.opacity = '0';
+            setTimeout(function() {
+                document.querySelector('.preloader').style.display = 'none';
+            }, 500);
+        }, 1500);
+
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        let lastScrollTop = 0;
+        
+        function handleScrollEffect() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+            
+            if (scrollTop > lastScrollTop && scrollTop > 300) {
+                navbar.style.top = '-80px';
+            } else {
+                navbar.style.top = '0';
+            }
+            
+            lastScrollTop = scrollTop;
+        }
+        
+        window.addEventListener('scroll', handleScrollEffect);
+        handleScrollEffect();
+
+        // Smooth Scrolling for Anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (navMenu.classList.contains('active')) {
+                        navToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Date Picker Initialization
+        if (typeof flatpickr !== 'undefined') {
+            flatpickr('.datepicker', {
+                minDate: 'today',
+                dateFormat: 'Y-m-d',
+                disableMobile: true
+            });
+        }
+
+        // Active Menu Item Highlighting
+        function setActiveMenuItem() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= (sectionTop - 150) && 
+                    window.pageYOffset < (sectionTop + sectionHeight - 150)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveMenuItem);
+
+        // Animation on Scroll
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .benefit-item, .package-card');
+            
+            elements.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    });
+    </script>
+</body>
+</html>

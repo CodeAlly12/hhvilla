@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience luxury coastal living at HH Villa Malindi in Kenya. Our 6-bedroom villa features traditional Swahili architecture, private pool, garden spa, and personalized services. Perfect for families and groups seeking tranquil beachside accommodation in Malindi.">
+    <title>HH Villa Malindi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-logo">HH VLLA ✦ SPA ✦ TRAVEL ✦ </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">HH ✦ VILLA</div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#accommodation">Accommodation</a></li>
+                <!-- <li><a href="#ocean-trip">Ocean-Flavours</a></li> -->
+                <li><a href="#SPA">Spa</a></li>
+                <li><a href="#Reviews">Reviews</a></li>
+                <li><a href="#Cta">Contact</a></li>
+            </ul>
+            <div class="book-now-button">
+                <a href="#book">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide active">
+                <div class="slide-bg" style="background-image: url('images/hh.jpg')"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h4 class="subtitle">Welcome to</h4>
+                    <h1 class="title">HH Villa Malindi</h1>
+                    <p class="description">luxury in our serene 6-bedroom villa</p>
+                    <div class="hero-buttons">
+                        <a href="#accommodation" class="btn-primary">Explore</a>
+                        <a href="#book" class="btn-secondary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/candles.jpg')"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h4 class="subtitle">Rejuvenate at our</h4>
+                    <h1 class="title"> Garden <br>Spa</h1>
+                    <p class="description">massages in our tranquil garden surrounded by tropical serenity</p>
+                    <div class="hero-buttons">
+                        <a href="#SPA" class="btn-primary">Services</a>
+                        <a href="spa.html" class="btn-secondary">Book Session</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/sand.view.jpg')"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                  <h4 class="subtitle">Explore</h4>
+                  <h1 class="title"> Golden<br>Dunes</h1>
+                    <p class="description">shimmering sand & the Indian Ocean</p>
+                 <div class="hero-buttons">
+                        <a href="#accommodation" class="btn-primary">Explore</a>
+                        <a href="#book" class="btn-secondary">Book Now</a>
+                 </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Thumbnails Preview -->
+        <div class="hero-thumbnails">
+            <div class="thumbnail active" data-index="0">
+                <img src="images/hh.jpg" alt="Beach view">
+                <div class="thumbnail-overlay"></div>
+            </div>
+            <div class="thumbnail" data-index="2">
+                <img src="images/candles.jpg" alt="Villa view">
+                <div class="thumbnail-overlay"></div>
+            </div>
+            <div class="thumbnail" data-index="3">
+                <img src="images/sand.view.jpg" alt="Villa view">
+                <div class="thumbnail-overlay"></div>
+            </div>
+        </div>
+        <div class="hero-controls">
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="slider-arrows">
+                <button class="arrow prev-arrow"><i class="fas fa-chevron-left"></i></button>
+                <button class="arrow next-arrow"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <div class="scroll-down">
+            <a href="#about">
+                <span>Scroll</span>
+                <i class="fas fa-long-arrow-alt-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Booking Widget -->
+    <section class="booking-widget" id="book">
+        <div class="container">
+            <div class="booking-form">
+                <div class="booking-input">
+                    <label>Check In</label>
+                    <input type="text" class="datepicker" placeholder="Select Date">
+                </div>
+                <div class="booking-input">
+                    <label>Check Out</label>
+                    <input type="text" class="datepicker" placeholder="Select Date">
+                </div>
+                <div class="booking-input">
+                    <label>Guests</label>
+                    <select>
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 Guests</option>
+                        <option>4 Guests</option>
+                        <option>5 Guests</option>
+                        <option>6+ Guests</option>
+                    </select>
+                    <label>child(0-16)</label>
+                    <select>
+                        <option>1 </option>
+                        <option>2 </option>
+                        <option>3 </option>
+                        <option>4 </option>
+                        <option>5 </option>
+                        <option>6</option>
+                    </select>
+                </div>
+                <button class="check-availability">Check Availability</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">ALittle About The Villa</span>
+                <h2 class="section-title">A Swahili Rustic Haven in Malindi</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to HH Villa Malindi, where traditional Swahili architecture meets modern comfort. Our rustic six-bedroom Villa captures the authentic coastal charm with its makuti roofs and coral stone walls.</p>
+                    
+                    <p>The property features three charming bungalows, each with a cozy kitchenette, and a magnificent three-bedroom main house that embodies the spirit of coastal living. Surrounded by lush tropical gardens, our beautiful spa, serene pool, and traditional Swahili-style lounging areas create the perfect retreat.</p>
+                    
+                    <p>Experience the warmth of coastal hospitality with flexible booking options for either the entire villa or individual units.</p>
+                    
+                    <div class="signature">
+                        <div class="author-info">
+                            <span class="author-name">Esther Alitwala</span>
+                            <span class="author-title">Owner of HH Villa Malindi</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#accommodation" class="text-link">Discover Our Accommodations <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="images/pool view.jpg" alt="HH Villa Pool">
+                    <div class="experience-badge">
+                        <span class="years">6+</span>
+                        <span class="text">Years of Excellence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Private Pool</h3>
+                    <p>Relax in our serene swimming pool surrounded by tropical  a garden</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Personal Chef</h3>
+                    <p>Enjoy delicious local and international cuisine prepared by our skilled chef on Request</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Spa Services</h3>
+                    <p>Indulge in rejuvenating spa treatments and massages in our dedicated spa area</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Ocean Activities</h3>
+                    <p>Experience thrilling water sports and ocean excursions just minutes away</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Partners Banner -->
+    <section class="booking-partners">
+        <div class="container">
+            <div class="partners-wrapper">
+                <div class="partners-text">
+                    <h3>Book Through Our Partners</h3>
+                    <p>Find us on your favorite booking platforms</p>
+                </div>
+                <div class="partners-logos">
+                    <a href="https://airbnb.com/h/hhvilla6" target="_blank" class="partner-logo">
+                        <img src="images/airbnb.png" alt="Airbnb">
+                    </a>
+                    <a href="https://www.booking.com/hotel/ke/hhvilla.en-gb.html?label=gen173nr-1BCAsodkIHaGh2aWxsYUgzWARodogBAZgBCbgBGMgBD9gBAegBAYgCAagCBLgCtpGGvwbAAgHSAiRhZTgzNjkzZi1hY2IwLTRhYTQtOGFkZi0zOGZlNjJmOTVhYWLYAgXgAgE&sid=eb89b521636254d9aae491033eee3d59&dist=0&keep_landing=1&sb_price_type=total&type=total&" target="_blank" class="partner-logo">
+                        <img src="images/booking.png" alt="Booking.com">
+                    </a>
+                    <a href="https://g.co/kgs/A7LVGk5" target="_blank" class="partner-logo">
+                        <img src="images/google.png" alt="google business">
+                    </a>
+                    <a href="https://www.vrbo.com/7568535ha?referrerId=HOT.HIS.Share.Landed.Copy_Link" target="_blank" class="partner-logo">
+                        <img src="images/vrbo-logo.png" alt="VRBO">
+                    </a>
+                    <a href="https://www.tripadvisor.com/Hotel_Review-g298253-d17638964-Reviews-HH_Villa-Malindi_Coast_Province.html?m=19905" target="_blank" class="partner-logo">
+                        <img src="images/tripadvisor-logo.png" alt="TripAdvisor">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Preview Section -->
+    <section class="accommodation-preview" id="accommodation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Accommodations</span>
+                <h2 class="section-title">Luxury Coastal Living</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="accommodation-grid">
+                <div class="accommodation-card">
+                    <div class="accommodation-image">
+                        <img src="images/main.house.jpg" alt="Main House">
+                    </div>
+                    <div class="accommodation-details">
+                        <h3>Main House</h3>
+                        <p>Three spacious bedrooms with en-suite bathrooms, living area, and kitchen</p>
+                        <ul class="amenities">
+                            <li><i class="fas fa-bed"></i> 3 Bedrooms</li>
+                            <li><i class="fas fa-bath"></i> 3 Bathrooms</li>
+                            <li><i class="fas fa-users"></i> Up to 6 Guests</li>
+                        </ul>
+                        <a href="main.html" class="btn-outline">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="accommodation-card">
+                    <div class="accommodation-image">
+                        <img src="images/bungalows.jpg" alt="Garden Bungalows">
+                    </div>
+                    <div class="accommodation-details">
+                        <h3>Garden Bungalows</h3>
+                        <p>Three charming single-bedroom bungalows with private kitchenettes</p>
+                        <ul class="amenities">
+                            <li><i class="fas fa-bed"></i> 1 Bedroom Each</li>
+                            <li><i class="fas fa-bath"></i> 1 Bathroom Each</li>
+                            <li><i class="fas fa-users"></i> 2 Guests Per Bungalow</li>
+                        </ul>
+                        <a href="garden.html" class="btn-outline">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="accommodation-card featured">
+                    <div class="accommodation-image">
+                        <img src="images/full-villa.jpg" alt="Entire Villa">
+                        <div class="featured-badge">Best Value</div>
+                    </div>
+                    <div class="accommodation-details">
+                        <h3>Entire Villa</h3>
+                        <p>Book the entire property for the ultimate private retreat experience</p>
+                        <ul class="amenities">
+                            <li><i class="fas fa-bed"></i> 6 Bedrooms</li>
+                            <li><i class="fas fa-bath"></i> 6 Bathrooms</li>
+                            <li><i class="fas fa-users"></i> Up to 12 Guests</li>
+                        </ul>
+                        <a href="full.html" class="btn-outline">View Details</a>
+                    </div>
+                </div>  
+                
+                <div class="accommodation-card">
+                    <div class="accommodation-image">
+                        <img src="images/apart.jpg" alt="Garden Bungalows">
+                    </div>
+                    <div class="accommodation-details">
+                        <h3>Beach Access Apartments</h3>
+                        <p>Modern apartments with direct beach access, available in one and two-bedroom setup</p>
+                        <ul class="amenities">
+
+                            <ul class="amenities">
+                                <li><i class="fas fa-bed"></i> 1-2 Bedrooms</li>
+                                <li><i class="fas fa-bath"></i> 1-2 Bathrooms</li>
+                                <li><i class="fas fa-users"></i> 2-4 Guests</li>
+                            </ul>
+                            
+                        </ul>
+                        <a href="apartment.html" class="btn-outline">View Details</a>
+                    </div>
+                </div>
+                
+                   
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SPA Section -->
+    <section class="spa-section" id="SPA">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Relax</span>
+                <h2 class="section-title">Spa Experiences</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="spa-content">
+                <div class="spa-text">
+                    <p>Indulge in our luxurious spa treatments designed to rejuvenate your mind, body, and spirit. Our skilled therapists combine traditional techniques with modern wellness approaches to deliver a truly transformative experience.</p>
+                    
+                    <div class="spa-treatments">
+                        <div class="treatment-item">
+                            <div class="treatment-icon">
+                                <i class="fas fa-hands"></i>
+                            </div>
+                            <div class="treatment-details">
+                                <h4>Traditional Massages</h4>
+                                <p>Experience deep relaxation with our selection of massage therapies inspired by both local and international techniques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="treatment-item">
+                            <div class="treatment-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="treatment-details">
+                                <h4>Natural Body Treatments</h4>
+                                <p>Rejuvenate your skin with our locally-sourced organic scrubs and wraps that nourish and revitalize.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="treatment-item">
+                            <div class="treatment-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="treatment-details">
+                                <h4>Wellness Packages</h4>
+                                <p>Combine multiple treatments for a comprehensive spa journey tailored to your specific needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="spa.html" class="btn-primary">Experience The Spa</a>
+                </div>
+                <div class="spa-image">
+                    <img src="images/spa.jpg" alt="Spa Treatment">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="Reviews">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-subtitle">Guest Experiences</span>
+                <h2 class="section-title">What Our Guests Say</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"…Private, Tranquil and Aesthetically pleasing ? 😍 In love.
+
+                            Esther and her team hold high values for the villa and their guests . Thank you for "</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <!-- <img src="images/testimonial-1.jpg" alt=""> -->
+                            </div>
+                            <div class="author-info">
+                                <h4>Ashie</h4>
+                                <p>United Kingdom</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The property looked much more prettier in real life, pictures don't fully show how cool this villa is. We booked the entire place and we really enjoyed it all to ourselves"</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <!-- <img src="images/testimonial-2.jpg" alt=""> -->
+                            </div>
+                            <div class="author-info">
+                                <h4>Natalia Lehrer </h4>
+                                <p>Germany</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The place is wonderful. Esther and her staff are lovely, responsive and very helpful. It is definitely our preferred place
+                            The property is quiet and beautiful. The units are spacious."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <!-- <img src="images/testimonial-2.jpg" alt=""> -->
+                            </div>
+                            <div class="author-info">
+                                <h4>Shamoun Aszed and Jenny Homan </h4>
+                                <p>Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"
+                            I really loved the space and the fact that its by the road makes it so accessible to areas and even the town . Esther is such a sweetheart always ensuring you are comfortable. The privacy so good as well enjoyed the pool so much.."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <!-- <img src="images/testimonial-3.jpg" alt=""> -->
+                            </div>
+                            <div class="author-info">
+                                <h4>Ashley Otieno</h4>
+                                <p>Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-controls">
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action with Inquiry Form -->
+    <section class="cta-section" id="Cta" style="background-image: url('images/cta-bg.jpg')">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready for Your Dream Vacation?</h2>
+                <p>Book your stay at HH Villa Malindi and experience the perfect blend of luxury and coastal charm</p>
+                <div class="cta-buttons">
+                    <a href="#book" class="btn-primary">Book Now</a>
+                    <button class="btn-outline light" onclick="openInquiryModal()">Contact Us</button>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+    </section>
+
+    <!-- Inquiry Form Modal -->
+    <div id="inquiryModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Send Us Your Inquiry</h3>
+                <button class="close-modal" onclick="closeInquiryModal()">&times;</button>
+            </div>
+            <form class="inquiry-form" onsubmit="submitInquiry(event)">
+                <div class="form-group">
+                    <label for="inquiryName">Full Name*</label>
+                    <input type="text" id="inquiryName" name="name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiryEmail">Email Address*</label>
+                        <input type="email" id="inquiryEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiryPhone">Phone Number</label>
+                        <input type="tel" id="inquiryPhone" name="phone">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiryCheckIn">Check-in Date</label>
+                        <input type="date" id="inquiryCheckIn" name="checkin">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiryCheckOut">Check-out Date</label>
+                        <input type="date" id="inquiryCheckOut" name="checkout">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiryGuests">Number of Guests</label>
+                    <select id="inquiryGuests" name="guests">
+                        <option value="">Select number of guests</option>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5 Guests</option>
+                        <option value="6">6 Guests</option>
+                        <option value="7-12">7-12 Guests</option>
+                        <option value="12+">12+ Guests</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquirySubject">Subject*</label>
+                    <select id="inquirySubject" name="subject" required>
+                        <option value="">Select inquiry type</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="booking">Booking Request</option>
+                        <option value="accommodation">Accommodation Information</option>
+                        <option value="spa">Spa Services</option>
+                        <option value="special-request">Special Request</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiryMessage">Your Message*</label>
+                    <textarea id="inquiryMessage" name="message" rows="5" required placeholder="Please tell us about your inquiry..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Contact Preference*</label>
+                    <div class="contact-preference">
+                        <label>
+                            <input type="radio" name="contactMethod" value="email" checked>
+                            Email
+                        </label>
+                        <label>
+                            <input type="radio" name="contactMethod" value="whatsapp"> 
+                            WhatsApp
+                        </label>
+                    </div>
+                </div>
+                <!-- Add this to your inquiry form just before the form-buttons div -->
+
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">Send Inquiry</button>
+                    <button type="button" class="btn-outline" onclick="closeInquiryModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Toast Notification -->
+    <div id="successToast" class="toast-notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Thank you! Your inquiry is being sent via WhatsApp and Email.</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HH ✦ VILLA</h2>
+                    <p>Luxury coastal living in Malindi, Kenya</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#accommodation">Accommodation</a></li>
+                        <li><a href="#Spa">Spa</a></li>
+                        <li><a href="#Reviews">Reviews</a></li>
+                        <li><a href="#Cta">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Malindi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 715-384-796
+                    <p><i class="fas fa-envelope"></i> info@hhvilla.me</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/company/hh-villa/?viewAsMember=true"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/hhvilla.malindi?igsh=MXFwa2F2bjZtemZueA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/uNr5v8xTcMN2RojA9"><i class="fa-brands fa-google"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HH Villa Malindi. All Rights Reserved.
+                    &copy; Designed by Esther Alitwala
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+</body>
+</html>

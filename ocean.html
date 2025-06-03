@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Flavours - HH Villa Malindi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        :root {
+      --primary-color: #57561e;
+      --secondary-color: #092922;
+      --text-color: #333;
+      --text-light: #777;
+      --white: #fff;
+      --off-white: #f5f5f5;
+      --light-gray: #eaeaea;
+      --dark-overlay: rgba(9, 41, 34, 0.7);
+      --transition: all 0.3s ease;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --border-radius: 4px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after,
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .book-now-button a {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .book-now-button a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Hero Section */
+        .ocean-hero {
+            height: 80vh;
+            background-image: url('images/sea.shell.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+        
+        .ocean-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .header-line {
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+        }
+        
+        /* Ocean Overview */
+        .ocean-overview {
+            padding: 100px 0;
+        }
+        
+        .overview-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .overview-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .overview-image img {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .overview-text h2 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .overview-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .amenity-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .amenity-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        /* Trip Options */
+        .trip-options {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .trips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .trip-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .trip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .trip-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .trip-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .trip-card:hover .trip-image img {
+            transform: scale(1.1);
+        }
+        
+        .trip-details {
+            padding: 30px;
+        }
+        
+        .trip-details h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .trip-details p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .trip-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Requirements Section */
+        .requirements-section {
+            padding: 100px 0;
+        }
+        
+        .requirements-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .requirements-text {
+            flex: 1;
+        }
+        
+        .requirements-image {
+            flex: 1;
+        }
+        
+        .requirements-image img {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .requirements-list {
+            margin-top: 30px;
+        }
+        
+        .requirement-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .requirement-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .requirement-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .booking-section .section-subtitle {
+            color: var(--primary-color);
+        }
+        
+        .booking-section .section-title {
+            color: var(--white);
+        }
+        
+        .booking-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .booking-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .booking-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .booking-option {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 10px;
+            flex: 1;
+            max-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .booking-option h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .booking-option .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .booking-option .price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none;
+        }
+        
+        /* Footer Styles */
+        .site-footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-logo p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .footer-links h3,
+        .footer-contact h3,
+        .footer-newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after,
+        .footer-contact h3::after,
+        .footer-newsletter h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            font-size: 14px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .footer-contact p i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-newsletter p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .newsletter-form button {
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .overview-content,
+            .requirements-content {
+                flex-direction: column;
+            }
+            
+            .trips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .booking-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .trips-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .amenities-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <div class="logo">HH•VILLA</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#accommodation">Accommodation</a></li>
+                <li><a href="index.html#ocean-trip" class="active">Ocean flavours</a></li>
+                <li><a href="index.html#SPA">SPA</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="book-now-button">
+                <a href="#booking">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="ocean-hero">
+        <div class="hero-content">
+
+            <h1>Ocean Flavours Experiences</h1>
+            <p>Discover the beauty and adventure of the Indian Ocean with our exclusive boat trips and water activities</p>
+        </div>
+    </section>
+
+    <!-- Ocean Overview -->
+    <section class="ocean-overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Ocean Adventures</span>
+                <h2 class="section-title">Experience the Magic of the Sea</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="overview-content">
+                <div class="overview-image">
+                    <img src="images/boat-view.jpg" alt="Boat Adventure">
+                    
+                </div>
+                <div class="overview-text">
+                    <h2>Unforgettable Ocean Journeys</h2>
+                    <p>We are offering a range of "full packet" boat and adventure trips. From fishing and grilling at a sandbank, to beach tours with sliding in the sand dunes.</p>
+                    <p>Our boat is newly totally renovated, with a spare motor for safety and trolling, life vests for everyone, secure boat type designed for rough conditions, while we take you enjoying the sea and the shores in Kilifi county (Kilifi, Watamu, Malindi) in a safe and pleasant setting.</p>
+                    <p>All our trips will take you along the shores of Kilifi County. On this trip we are starting in Watamu and going either north to the Mambrui sandunes outside Malindi. On the way we will see some amazing beaches, or try our fishing luck, swim, play in the dunes, or simply enjoy the trip on the Indian Ocean, while we are watching the stunning scenery we are passing.</p>
+                    <p>We do also provide the option of choma (bbq; extra!) or strolling in Malindi town.</p>
+                    
+                    <div class="amenities-list">
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-ship"></i>
+                            </div>
+                            <span>Safe Boat Design</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-life-ring"></i>
+                            </div>
+                            <span>Life Vests for Everyone</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <span>Fishing Equipment</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <span>Beach Excursions</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <span>Optional BBQ</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <span>Scenic Routes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Options -->
+    <section class="trip-options">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Packages</span>
+                <h2 class="section-title">Choose Your Ocean Adventure</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="trips-grid">
+                <div class="trip-card">
+                    <div class="trip-image">
+                        <img src="images/fishing.jpg" alt="Fishing Adventure">
+                    </div>
+                    <div class="trip-details">
+                        <h3>Fishing Adventure</h3>
+                        <p>Try your luck catching fish in the rich waters of the Indian Ocean with our fishing equipment and expert guidance.</p>
+                        <div class="trip-info">
+                            <span><i class="far fa-clock"></i> 4-5 hours</span>
+                            <span><i class="fas fa-users"></i> Up to 8 people</span>
+                        </div>
+                        <a href="#booking" class="btn-outline">Book This Trip</a>
+                    </div>
+                </div>
+                
+                <div class="trip-card">
+                    <div class="trip-image">
+                        <img src="images/sand.view.jpg" alt="Sand Dunes Adventure">
+                    </div>
+                    <div class="trip-details">
+                        <h3>Sand Dunes Expedition</h3>
+                        <p>Experience the thrill of sliding down the magnificent Mambrui sand dunes outside Malindi on this exciting adventure.</p>
+                        <div class="trip-info">
+                            <span><i class="far fa-clock"></i> 6-7 hours</span>
+                            <span><i class="fas fa-users"></i> Up to 8 people</span>
+                        </div>
+                        <a href="#booking" class="btn-outline">Book This Trip</a>
+                    </div>
+                </div>
+                
+                <div class="trip-card">
+                    <div class="trip-image">
+                        <img src="images/bbq.jpg" alt="Beach BBQ">
+                    </div>
+                    <div class="trip-details">
+                        <h3>Beach BBQ Experience</h3>
+                        <p>Enjoy a delicious choma (BBQ) on a secluded sandbank while taking in the breathtaking coastal views.</p>
+                        <div class="trip-info">
+                            <span><i class="far fa-clock"></i> 5-6 hours</span>
+                            <span><i class="fas fa-users"></i> Up to 8 people</span>
+                        </div>
+                        <a href="#booking" class="btn-outline">Book This Trip</a>
+                    </div>
+                </div>
+                
+                <div class="trip-card">
+                    <div class="trip-image">
+                        <img src="images/paddle-boarding.jpg" alt="Paddle Boarding">
+                    </div>
+                    <div class="trip-details">
+                        <h3>Paddle Boarding</h3>
+                        <p>Glide peacefully across the crystal-clear waters while enjoying panoramic views of the coastline on our premium paddle boards.</p>
+                        <div class="trip-info">
+                            <span><i class="far fa-clock"></i> 3-4 hours</span>
+                            <span><i class="fas fa-users"></i> Up to 6 people</span>
+                        </div>
+                        <a href="#booking" class="btn-outline">Book This Trip</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="requirements-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Good To Know</span>
+                <h2 class="section-title">Trip Requirements & Recommendations</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="requirements-content">
+                <div class="requirements-text">
+                    <p>To ensure you have the best possible experience on our ocean adventures, we recommend the following preparations and requirements for all participants:</p>
+                    
+                    <div class="requirements-list">
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="requirement-text">
+                                <h4>Clothing & Protection</h4>
+                                <p>Wear comfortable swimwear, bring a change of clothes, sun hat, sunglasses, and apply waterproof sunscreen. We recommend bringing a light jacket for occasional wind.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div class="requirement-text">
+                                <h4>Swimming Ability</h4>
+                                <p>While life jackets are provided, basic swimming ability is recommended for certain activities. Please inform our staff if you are not comfortable in water.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-first-aid"></i>
+                            </div>
+                            <div class="requirement-text">
+                                <h4>Health Considerations</h4>
+                                <p>Inform us of any medical conditions, allergies, or physical limitations before the trip. We recommend bringing any necessary medications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-wine-bottle"></i>
+                            </div>
+                            <div class="requirement-text">
+                                <h4>Food & Beverages</h4>
+                                <p>Water is provided, but you may bring additional snacks and drinks. For trips with BBQ options, inform us of any dietary restrictions in advance.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="requirement-text">
+                                <h4>Recommended Items</h4>
+                                <p>Consider bringing a waterproof camera, phone case, small towel, and a dry bag for your valuables.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="requirements-image">
+                    <img src="images/prep.jpg" alt="Trip Preparation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Photo Gallery</span>
+                <h2 class="section-title">Glimpses of Our Ocean Adventures</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/bbbq.jpg" alt="Boat Adventure">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/sand-dunes.jpg" alt="Fishing">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/turtle.jpg" alt="Sand Dunes">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/sand.jpg" alt="Beach Views">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/padda.jpg" alt="BBQ Experience">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/beachview.jpg" alt="beach veiw">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-subtitle">Book Your Trip</span>
+                <h2 class="section-title">Reserve Your Ocean Adventure</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="booking-content">
+                <p>Book your ocean adventure with us and create unforgettable memories on the stunning Kenyan coast. Select the package that best suits your preferences and let us handle the rest.</p>
+                
+                <div class="booking-options">
+                    <div class="booking-option">
+                        <h3>Half-Day Adventure</h3>
+                        <div class="price">$120 <span>per trip</span></div>
+                        <p>Perfect for a quick ocean experience.</p>
+                        <ul>
+                            <li>4-5 hours duration</li>
+                            <li>Up to 8 people</li>
+                            <li>Includes fishing equipment</li>
+                            <li>Water provided</li>
+                        </ul>
+                        <a href="#" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+                    </div>
+                    
+                    <div class="booking-option">
+                        <h3>Full-Day Adventure</h3>
+                        <div class="price">$180 <span>per trip</span></div>
+                        <p>Our most comprehensive ocean experience.</p>
+                        <ul>
+                            <li>6-7 hours duration</li>
+                            <li>Up to 8 people</li>
+                            <li>Includes all equipment</li>
+                            <li>BBQ option available (+$40)</li>
+                        </ul>
+                        <a href="#" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+                    </div>
+                    
+                    <div class="booking-option">
+                        <h3>Paddle Board Rental</h3>
+                        <div class="price">$35 <span>per board</span></div>
+                        <p>Experience the tranquility of paddle boarding.</p>
+                        <ul>
+                            <li>3 hours duration</li>
+                            <li>1 person per board</li>
+                            <li>Includes paddle & life vest</li>
+                            <li>Basic instruction provided</li>
+                        </ul>
+                        <a href="#" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Frequently Asked Questions</span>
+                <h2 class="section-title">Common Questions</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How many people can join the boat trip?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our boat can comfortably accommodate up to 8 passengers plus our experienced crew. For larger groups, we may be able to arrange multiple boats subject to availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are children allowed on the trips?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, children are welcome on our boat trips. We provide child-sized life jackets for safety. Children under 12 must be accompanied by an adult. Some activities may have age restrictions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens in case of bad weather?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your safety is our priority. If weather conditions are unfavorable, we may reschedule your trip for another day or offer a full refund. We monitor weather conditions closely and will inform you in advance of any changes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need to bring my own fishing equipment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, we provide all necessary fishing equipment including rods, reels, bait, and tackle. You're welcome to bring your own equipment if preferred, but it's not required.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What does the BBQ (choma) option include?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The BBQ option includes a delicious selection of grilled meats (chicken, beef, or fish), accompanied by traditional sides and fresh salads. We can accommodate vegetarian options with advance notice. The BBQ is prepared on a secluded beach or sandbank during your trip.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HH•VILLA</h2>
+                    <p>Luxury coastal living in Malindi, Kenya</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#accommodation">Accommodation</a></li>
+                        <li><a href="#ocean-trip">Ocean Trip</a></li>
+                        <li><a href="#spa">Spa</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Malindi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 715-384-796
+                    <p><i class="fas fa-envelope"></i> info@hhvilla.me</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                       
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HH Villa Malindi. All Rights Reserved.
+                    &copy; designed by Esther Alitwala
+                </p>
+          
+        </div>
+    </footer>
+
+    <script>
+        // Simple toggle for FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    item.querySelector('i').classList.remove('fa-chevron-up');
+                    item.querySelector('i').classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    item.querySelector('i').classList.remove('fa-chevron-down');
+                    item.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

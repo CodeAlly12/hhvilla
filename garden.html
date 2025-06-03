@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stay in our charming Garden Bungalows at HH Villa Malindi. Each private bungalow features a kitchenette, en-suite bathroom, and terrace overlooking lush tropical gardens. Enjoy authentic Swahili architecture with modern comforts, shared pool access, and beach proximity and the city in malindi.Perfect for couples or solo travelers in Malindi, Kenya">
+    <title>Garden Bungalows - HH Villa Malindi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        :root {
+      --primary-color: #57561e;
+      --secondary-color: #092922;
+      --text-color: #333;
+      --text-light: #777;
+      --white: #fff;
+      --off-white: #f5f5f5;
+      --light-gray: #eaeaea;
+      --dark-overlay: rgba(9, 41, 34, 0.7);
+      --transition: all 0.3s ease;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --border-radius: 4px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after,
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .book-now-button a {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .book-now-button a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Mobile Navigation Styles */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        /* Media Query for Mobile Navigation */
+        @media (max-width: 992px) {
+            .nav-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 50px 0;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            .book-now-button {
+                margin-top: 20px;
+            }
+            
+            .navbar-container {
+                position: relative;
+            }
+            
+            /* Add overlay when menu is open */
+            .menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                visibility: hidden;
+                z-index: 999;
+                transition: all 0.3s ease;
+            }
+            
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        /* Hero Section */
+        .bungalow-hero {
+            height: 80vh;
+            background: linear-gradient(135deg, rgba(87, 86, 30, 0.6) 0%, rgba(9, 41, 34, 0.6) 100%), url('images/tropical-villa.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+        
+        .bungalow-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.03);
+           
+        }
+        .beach-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            color:white;
+           
+            letter-spacing: 5px;
+            font-weight: 700;
+        }
+        
+        .cut-out-text {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #1a2926c2;
+        
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .header-line {
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+        }
+        
+        /* Bungalow Overview */
+        .bungalow-overview {
+            padding: 100px 0;
+        }
+        
+        .overview-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .overview-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .overview-image img {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .overview-text h2 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .overview-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .amenity-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .amenity-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .booking-section .section-subtitle {
+            color: var(--primary-color);
+        }
+        
+        .booking-section .section-title {
+            color: var(--white);
+        }
+        
+        .booking-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .booking-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .booking-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .booking-option {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 10px;
+            flex: 1;
+            max-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .booking-option h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .booking-option .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .booking-option .price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--off-white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links h3,
+        .footer-contact h3,
+        .footer-newsletter h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after,
+        .footer-contact h3:after,
+        .footer-newsletter h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-contact p i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 12px 15px;
+            color: var(--white);
+            border-radius: 30px 0 0 30px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--primary-color);
+            border: none;
+            color: var(--white);
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .overview-content {
+                flex-direction: column;
+            }
+            
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .booking-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-container,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .amenities-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 42px;
+                letter-spacing: 3px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <div class="logo">HH ✦ VILLA</div>
+            
+            <!-- Mobile navigation toggle button -->
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#accommodation" class="active">Accommodation</a></li>
+                <!-- <li><a href="index.html#ocean-trip">Ocean flavours</a></li> -->
+                <li><a href="index.html#SPA">SPA</a></li>
+                <li><a href="index.html#Reviews">Reviews</a></li>
+                <li><a href="index.html#Cta">Contact</a></li>
+            
+                <div class="book-now-button">
+                    <a href="#booking">Book Now</a>
+                </div>
+            </ul>
+            
+            <!-- Mobile menu overlay -->
+            <div class="menu-overlay"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bungalow-hero">
+        <div class="hero-content">
+            <div class="beach-badge">Private Kitchenette • Pool View</div>
+            <h1 class="cut-out-text">Garden Bungalows</h1>
+            <p>Enjoy a tranquil retreat in our charming individual bungalows surrounded by lush tropical gardens</p>
+        </div>
+    </section>
+
+    <!-- Bungalow Overview -->
+    <section class="bungalow-overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Bungalows</span>
+                <h2 class="section-title">Swahili Charm Meets Modern Comfort</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="overview-content">
+                <div class="overview-image">
+                    <img src="images/interior.jpg" alt="Bungalow Interior">
+                </div>
+                <div class="overview-text">
+                    <h2>Private Garden Bungalows</h2>
+                    <p>Our three garden bungalows offer the perfect blend of traditional Swahili charm and modern comfort. Each unit is thoughtfully designed with makuti roofs and coral stone walls that capture the authentic coastal feel while providing all the modern amenities you need.</p>
+                    <p>With private entrances and personal kitchenettes, these single-bedroom retreats are ideal for couples or solo travelers seeking a peaceful getaway. Each bungalow features a comfortable bedroom, an ensuite bathroom with hot water shower, and a small kitchen area for simple meal preparation.</p>
+                    <p>Step outside onto your private terrace and enjoy the views of our lush tropical gardens while sipping your morning coffee or evening drink. The shared swimming pool and lounge areas are just steps away.</p>
+                    
+                    <div class="amenities-list">
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <span>King Size Bed</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-shower"></i>
+                            </div>
+                            <span>Ensuite Bathroom</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <span>Kitchenette</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <span>Stand-Fan</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <span>Free Wi-Fi</span>
+                        </div>
+                        <div class="amenity-item">
+                            <div class="amenity-icon">
+                                <i class="fas fa-chair"></i>
+                            </div>
+                            <span>Private Terrace</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features-grid">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Bungalow Features</span>
+                <h2 class="section-title">What Makes Our Bungalows Special</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Garden Setting</h3>
+                    <p>Nestled within lush tropical gardens featuring fragrant frangipani, bougainvillea, and native coastal plants.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h3>Private Entrance</h3>
+                    <p>Enjoy complete privacy with your own separate entrance and secluded terrace space.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3>Daily Housekeeping</h3>
+                    <p>Fresh linens and daily cleaning service ensures your bungalow remains pristine throughout your stay.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Backup Generator</h3>
+                    <p>Enjoy uninterrupted power supply with our backup generator system during local outages.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Pool Access</h3>
+                    <p>Full access to our serene swimming pool, perfect for cooling off during hot coastal days.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>24/7 Security</h3>
+                    <p>Round-the-clock security ensures your safety and peace of mind throughout your stay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Photo Gallery</span>
+                <h2 class="section-title">Experience Our Bungalows</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/bungalows.jpg" alt="Bungalow Bedroom">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/bungalow-bathroom.jpg" alt="Bungalow Bathroom">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/bungalow-kitchen.jpg" alt="Bungalow Kitchenette">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/terrace.jpg" alt="Bungalow Terrace">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/exterior.jpg" alt="Bungalow Exterior">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/garden-view.jpg" alt="Garden View">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-subtitle">Book Your Stay</span>
+                <h2 class="section-title">Reserve Your Bungalow</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="booking-content">
+                <p>Our Garden Bungalows can be booked individually or as part of the entire villa. Choose the option that best suits your needs and enjoy the perfect coastal getaway.</p>
+                
+                <div class="booking-options">
+                    <div class="booking-option">
+                        <h3>Single Bungalow</h3>
+                        <div class="price">$40 <span>per night</span></div>
+                        <p>Perfect for couples or solo travelers looking for a peaceful retreat.</p>
+                        <ul>
+                            <li>Sleeps 2 people</li>
+                            <li>Self-catering facilities</li>
+                            <li>Access to all facilities</li>
+                        </ul>
+                        <a href="booking.html?type=garden-bungalow-nightly&price=45&title=Garden%20Bungalow%20-%20Nightly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+                    </div>
+                    
+                    <div class="booking-option">
+                        <h3>Extended Stay</h3>
+                        <div class="price">$257 <span>per week</span></div>
+                        <p>Save when you stay longer and truly experience the coastal lifestyle.</p>
+                        <ul>
+                            <li>7 nights accommodation</li>
+                            <li>Laundry services included</li>
+                            <li>15% discount on ocean activities</li>
+                        </ul>
+                        <a href="booking.html?type=garden-bungalow-weekly&price=315&title=Garden%20Bungalow%20-%20Weekly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    
+    <!-- FAQ Section -->
+    <section class="faq-section" id="bungalow-faqs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Bungalow Questions</span>
+                <h2 class="section-title">Garden Bungalow FAQs</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>What amenities are included in each Garden Bungalow?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Each Garden Bungalow features a comfortable king-size bed, private en-suite bathroom with hot water shower, kitchenette for simple meal preparation, free Wi-Fi, stand fan for cooling, and a private terrace overlooking the tropical gardens. Guests have access to the shared swimming pool and all common areas within the villa property.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Can the bungalows accommodate more than two people?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Garden Bungalows are designed primarily for 2 adults. However, we can accommodate one additional child under 12 years with an extra bed for an additional charge. Due to space limitations, we cannot accommodate more than 2 adults and 1 child in each bungalow. For larger groups, we recommend booking multiple bungalows or considering our Main House.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>How far are the bungalows from the beach?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Our property is located approximately 800 meters from Malindi Beach, about a 10-minute walk. The route to the beach is straightforward, passing through a safe residential area. We can arrange transportation to the beach upon request, or many guests enjoy the short walking distance as part of their daily routine.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Are meals included with the bungalow booking?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">No, meals are not included with the bungalow booking. All bungalows are self-catering only and come equipped with a kitchenette for meal preparation. Guests are responsible for their own meals during their stay. There are grocery stores within walking distance, and we can recommend nearby restaurants and food delivery options if desired.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Is the pool private for bungalow guests?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">The swimming pool is shared with all guests staying at HH Villa Malindi, including those in the main house if it is occupied. However, our property is designed to provide plenty of space and privacy for all guests. If you desire complete exclusivity, we recommend booking the entire villa property to ensure private use of all facilities.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+                    <div class="faq-question" itemprop="name">
+                        <span>Do you offer airport transfers?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, we can arrange airport transfers from Malindi Airport for an additional fee. Please let us know your flight details when booking so we can make the necessary arrangements. We also offer transportation to other destinations in and around Malindi, including day trips to nearby attractions. Just inform our staff of your transportation needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <!-- <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Frequently Asked Questions</span>
+                <h2 class="section-title">Common Questions</h2>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How far are the bungalows from the beach?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our property is located approximately 800 meters from Malindi Beach, about a 10-minute walk. We can also arrange transportation to the beach upon request.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are meals included with the bungalow booking?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, meals are not included with the bungalow booking. All bungalows are self-catering only and come equipped with a kitchenette for meal preparation. Guests are responsible for their own meals during their stay.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is the pool private for bungalow guests?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The swimming pool is shared with all guests staying at HH Villa Malindi, including those in the main house if it is occupied. However, our property is designed to provide plenty of space and privacy for all guests.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer airport transfers?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we can arrange airport transfers from Malindi Airport for an additional fee. Please let us know your flight details when booking so we can make the necessary arrangements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HH ✦ VILLA</h2>
+                    <p>Luxury coastal living in Malindi, Kenya</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                         <li><a href="index.html#accommodation" class="active">Accommodation</a></li>
+                        <!-- <li><a href="index.html#ocean-trip" class="active">Ocean flavours</a></li> -->
+                        <li><a href="index.html#SPA">Spa</a></li>
+                        <li><a href="inde.html#Reviews">Reviews</a></li>
+                        <li><a href="#Cta">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Malindi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 715-384-796 </p>
+                    <p><i class="fas fa-envelope"></i> info@hhvilla.me</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/company/hh-villa/?viewAsMember=true"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/hhvilla.malindi?igsh=MXFwa2F2bjZtemZueA=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/uNr5v8xTcMN2RojA9"><i class="fa-brands fa-google"></i></a>
+                        
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HH Villa Malindi. All Rights Reserved.
+                    &copy; designed by Esther Alitwala
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Simple toggle for FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    item.querySelector('i').classList.remove('fa-chevron-up');
+                    item.querySelector('i').classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    item.querySelector('i').classList.remove('fa-chevron-down');
+                    item.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+        });
+        
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        navToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close mobile menu when clicking on overlay
+        menuOverlay.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>
