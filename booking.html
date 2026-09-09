@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GG69D1H4TG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GG69D1H4TG');
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking - HH Villa Malindi</title>
@@ -943,7 +933,7 @@
                         </div>
                         
                         <div class="children-info-banner">
-                            <i class="fas fa-info-circle"></i> Children aged 0-18 stay free at HH Villa Malindi (within room capacity limits)
+                            <i class="fas fa-info-circle"></i> Children aged 0-14stay free at HH Villa Malindi (within room capacity limits)
                         </div>
                         
                         <div class="form-row">
@@ -1113,8 +1103,8 @@
                     </div>
                     
                     <div class="confirmation-message">
-                        <h2>Your Booking Request is Received!</h2>
-                        <p>Thank you for your booking request at HH Villa Malindi. You will receive a confirmation email with payment instructions shortly.</p>
+                        <h2>Your Booking Request is Ready!</h2>
+                        <p>We've opened WhatsApp with your booking details pre-filled — just hit send and our team will reply with payment instructions shortly.</p>
                     </div>
                     
                     <div class="booking-details">
@@ -1320,17 +1310,6 @@
         </div>
     </footer>
     
-    
-    <script type="text/javascript"
-       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-   <script type="text/javascript">
-      (function(){
-          emailjs.init({
-            publicKey: "9SoQGPvop46icSVnA",
-          });
-      })();
-   </script>
     
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -1680,72 +1659,50 @@
                             : 'No';
                         
                         // Format payment option
-                        const paymentOptionText = bookingData.paymentOption === 'full' 
-                            ? 'Full Payment' 
+                        const paymentOptionText = bookingData.paymentOption === 'full'
+                            ? 'Full Payment'
                             : '30% Deposit';
-                        
-                        // Prepare email template parameters
-                        const emailParams = {
-                            to_email: 'airbnb@tlink.dk',
-                            reply_to: emailInput.value, 
-                            from_name: `${firstNameInput.value} ${lastNameInput.value}`,
-                            subject: `New Booking: ${reference}`,
-                            booking_ref: reference,
-                            guest_name: `${firstNameInput.value} ${lastNameInput.value}`,
-                            guest_email: emailInput.value,
-                            guest_phone: phoneInput.value,
-                            accommodation: bookingData.accommodation,
-                            dates: `${formatDate(bookingData.checkin)} - ${formatDate(bookingData.checkout)} (${bookingData.nights} nights)`,
-                            guests: `${bookingData.adults} adults, ${bookingData.children} children`,
-                            child_ages: bookingData.children > 0 ? formatChildrenAges(bookingData.childrenAges) : 'None',
-                            pets: petsInfo,
-                            subtotal: `$${bookingData.subtotal.toFixed(2)}`,
-                            extras: `$${totalExtras.toFixed(2)}`,
-                            tax: `$${bookingData.tax.toFixed(2)}`,
-                            total_amount: `$${bookingData.total.toFixed(2)}`,
-                            payment_option: paymentOptionText,
-                            special_requests: specialRequestsInput.value || 'None specified'
-                        };
-                        
-                        // Send the email using EmailJS v4
-                        emailjs.send("service_23fchiq", "template_ox2cdui", emailParams)
-                            .then(function(response) {
-                                console.log('Email sent successfully!', response.status);
-                                
-                                // Hide payment step and show confirmation
-                                document.getElementById('step-payment').classList.remove('active');
-                                confirmationSection.classList.add('active');
-                                
-                                // Update process steps
-                                document.getElementById('step-4').classList.add('active');
-                                
-                                // Scroll to top of confirmation
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: 'smooth'
-                                });
-                                
-                                // Reset button state
-                                confirmText.textContent = 'Confirm Booking';
-                                confirmSpinner.style.display = 'none';
-                                confirmButton.disabled = false;
-                            })
-                            .catch(function(error) {
-                                console.error('Email failed to send', error);
-                                alert('Your booking was received, but there was a problem sending the confirmation. We will contact you shortly.');
-                                
-                                // Still show confirmation to user
-                                document.getElementById('step-payment').classList.remove('active');
-                                confirmationSection.classList.add('active');
-                                
-                                // Update process steps
-                                document.getElementById('step-4').classList.add('active');
-                                
-                                // Reset button state
-                                confirmText.textContent = 'Confirm Booking';
-                                confirmSpinner.style.display = 'none';
-                                confirmButton.disabled = false;
-                            });
+
+                        // Build the WhatsApp message with the booking details
+                        const whatsappMessage = [
+                            `New Booking Request: ${reference}`,
+                            `Guest: ${firstNameInput.value} ${lastNameInput.value}`,
+                            `Email: ${emailInput.value}`,
+                            `Phone: ${phoneInput.value}`,
+                            `Accommodation: ${bookingData.accommodation}`,
+                            `Dates: ${formatDate(bookingData.checkin)} - ${formatDate(bookingData.checkout)} (${bookingData.nights} nights)`,
+                            `Guests: ${bookingData.adults} adults, ${bookingData.children} children`,
+                            `Children Ages: ${bookingData.children > 0 ? formatChildrenAges(bookingData.childrenAges) : 'None'}`,
+                            `Pets: ${petsInfo}`,
+                            `Subtotal: $${bookingData.subtotal.toFixed(2)}`,
+                            `Extras: $${totalExtras.toFixed(2)}`,
+                            `Tax: $${bookingData.tax.toFixed(2)}`,
+                            `Total: $${bookingData.total.toFixed(2)}`,
+                            `Payment Option: ${paymentOptionText}`,
+                            `Special Requests: ${specialRequestsInput.value || 'None specified'}`
+                        ].join('\n');
+
+                        // Open WhatsApp with the pre-filled booking message
+                        const whatsappNumber = '254715384796';
+                        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+
+                        // Hide payment step and show confirmation
+                        document.getElementById('step-payment').classList.remove('active');
+                        confirmationSection.classList.add('active');
+
+                        // Update process steps
+                        document.getElementById('step-4').classList.add('active');
+
+                        // Scroll to top of confirmation
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+
+                        // Reset button state
+                        confirmText.textContent = 'Confirm Booking';
+                        confirmSpinner.style.display = 'none';
+                        confirmButton.disabled = false;
                     }, 1500);
                 }
             });
@@ -1968,8 +1925,8 @@
                 if (!bookingData.accommodation) return;
                 
                 // Calculate base cost
-                let baseCost = bookingData.type.includes('weekly') 
-                    ? bookingData.price 
+                let baseCost = bookingData.type.includes('weekly')
+                    ? bookingData.price * (bookingData.nights / 7)
                     : bookingData.price * bookingData.nights;
                 
                 // Calculate total extras
@@ -2098,6 +2055,9 @@
                             isValid = false;
                         } else if (bookingData.checkin && bookingData.checkout <= bookingData.checkin) {
                             showError(checkoutInput, 'Check-out must be after check-in');
+                            isValid = false;
+                        } else if (bookingData.type.includes('weekly') && bookingData.nights % 7 !== 0) {
+                            showError(checkoutInput, 'This is a weekly rate — stay must be booked in multiples of 7 nights');
                             isValid = false;
                         }
                         break;
