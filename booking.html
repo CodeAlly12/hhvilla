@@ -368,7 +368,25 @@
             border-radius: 8px;
             margin: 20px 0;
         }
-        
+
+        .payment-channel-tag {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #e7f8ee;
+            color: #14532d;
+            padding: 12px 16px;
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            margin: 15px 0;
+        }
+
+        .payment-channel-tag i {
+            font-size: 20px;
+            color: #25D366;
+        }
+
+
         .summary-item {
             display: flex;
             justify-content: space-between;
@@ -1086,6 +1104,10 @@
                             <span class="error-message" id="terms-error"></span>
                         </div>
                         
+                        <div class="payment-channel-tag">
+                            <i class="fab fa-whatsapp"></i> After you confirm, your booking details are sent via WhatsApp — our team will reply there with payment instructions.
+                        </div>
+
                         <div class="form-buttons">
                             <button class="btn btn-secondary prev-step" data-prev="step-dates">Back</button>
                             <button class="btn btn-primary" id="confirm-booking">
@@ -1394,9 +1416,11 @@
             // Constants
             const CHILD_FREE_AGE_MIN = 0;
             const CHILD_FREE_AGE_MAX = 18;
+            const CHILD_OLDER_AGE_THRESHOLD = 14; // ages 0-14 stay free per policy; above this incurs OLDER_CHILD_FEE
             const EXTRA_CHILD_FEE = 25; // $25 per child exceeding max capacity
+            const OLDER_CHILD_FEE = 15; // $15 per child older than 14
             const PET_FEE = 30; // $30 pet fee
-            
+
             // Current booking data
             let bookingData = {
                 accommodation: null,
@@ -1413,6 +1437,7 @@
                 childrenAges: [],
                 freeChildrenCount: 0,
                 extraChildrenCount: 0,
+                olderChildrenCount: 0,
                 pets: 'no',
                 petType: '',
                 specialRequests: '',
@@ -1423,7 +1448,8 @@
                 deposit: 0,
                 extraFees: {
                     pets: 0,
-                    extraChildren: 0
+                    extraChildren: 0,
+                    olderChildren: 0
                 }
             };
             
@@ -1632,8 +1658,11 @@
                         if (bookingData.children > 0) {
                             guestsText += `, ${bookingData.children} ${bookingData.children === 1 ? 'child' : 'children'}`;
                             
-                            if (bookingData.extraChildrenCount > 0) {
-                                guestsText += ` (${bookingData.extraChildrenCount} with extra charge)`;
+                            if (bookingData.extraChildrenCount > 0 || bookingData.olderChildrenCount > 0) {
+                                const chargeNotes = [];
+                                if (bookingData.extraChildrenCount > 0) chargeNotes.push(`${bookingData.extraChildrenCount} over capacity`);
+                                if (bookingData.olderChildrenCount > 0) chargeNotes.push(`${bookingData.olderChildrenCount} over age 14`);
+                                guestsText += ` (${chargeNotes.join(', ')} with extra charge)`;
                             }
                         }
                         confirmationGuests.textContent = guestsText;
@@ -1644,7 +1673,7 @@
                         }
                         
                         // Calculate total extras
-                        const totalExtras = bookingData.extraFees.extraChildren + bookingData.extraFees.pets;
+                        const totalExtras = bookingData.extraFees.extraChildren + bookingData.extraFees.olderChildren + bookingData.extraFees.pets;
                         
                         // Update financial information
                         confirmationSubtotal.textContent = `$${bookingData.subtotal.toFixed(2)}`;
@@ -1741,7 +1770,9 @@
                 bookingData.childrenAges = [];
                 bookingData.freeChildrenCount = 0;
                 bookingData.extraChildrenCount = 0;
+                bookingData.olderChildrenCount = 0;
                 bookingData.extraFees.extraChildren = 0;
+                bookingData.extraFees.olderChildren = 0;
                 childAgeGroups.style.display = 'none';
                 childAgeGroups.innerHTML = '';
                 
@@ -1760,7 +1791,9 @@
                     bookingData.childrenAges = [];
                     bookingData.freeChildrenCount = 0;
                     bookingData.extraChildrenCount = 0;
+                    bookingData.olderChildrenCount = 0;
                     bookingData.extraFees.extraChildren = 0;
+                    bookingData.extraFees.olderChildren = 0;
                     return;
                 }
                 
@@ -1837,26 +1870,33 @@
                 // Reset counters
                 bookingData.freeChildrenCount = 0;
                 bookingData.extraChildrenCount = 0;
-                
+                bookingData.olderChildrenCount = 0;
+
                 // Count free children (0-18 years old)
                 bookingData.childrenAges.forEach(age => {
                     if (age >= CHILD_FREE_AGE_MIN && age <= CHILD_FREE_AGE_MAX) {
                         bookingData.freeChildrenCount++;
                     }
                 });
-                
+
                 // Calculate extra children (exceeding max capacity)
                 bookingData.extraChildrenCount = Math.max(0, bookingData.freeChildrenCount - bookingData.maxChildren);
-                
+
+                // Count children older than the free-age threshold (they incur OLDER_CHILD_FEE
+                // regardless of whether they also fall under the extra-capacity fee above)
+                bookingData.olderChildrenCount = bookingData.childrenAges.filter(age => age > CHILD_OLDER_AGE_THRESHOLD).length;
+
                 // Calculate extra fees
                 bookingData.extraFees.extraChildren = bookingData.extraChildrenCount * EXTRA_CHILD_FEE;
-                
+                bookingData.extraFees.olderChildren = bookingData.olderChildrenCount * OLDER_CHILD_FEE;
+
                 // Update the summary
-                summaryExtraChildren.textContent = `$${bookingData.extraFees.extraChildren.toFixed(2)}`;
+                const totalChildFees = bookingData.extraFees.extraChildren + bookingData.extraFees.olderChildren;
+                summaryExtraChildren.textContent = `$${totalChildFees.toFixed(2)}`;
                 summaryPetFee.textContent = `$${bookingData.extraFees.pets.toFixed(2)}`;
                 
                 // Total extras for sidebar and confirmation
-                const totalExtras = bookingData.extraFees.extraChildren + bookingData.extraFees.pets;
+                const totalExtras = bookingData.extraFees.extraChildren + bookingData.extraFees.olderChildren + bookingData.extraFees.pets;
                 sidebarExtras.textContent = `$${totalExtras.toFixed(2)}`;
             }
             
@@ -1888,12 +1928,18 @@
                 
                 return ages.map((age, index) => {
                     let ageText = age === 0 ? 'Infant (<1 year)' : `${age} ${age === 1 ? 'year' : 'years'}`;
-                    
-                    // Mark children with extra charge
-                    if (index >= bookingData.maxChildren) {
+
+                    // Mark children with extra charge (over room capacity and/or older than the free-age threshold)
+                    const overCapacity = index >= bookingData.maxChildren;
+                    const overAgeThreshold = age > CHILD_OLDER_AGE_THRESHOLD;
+                    if (overCapacity && overAgeThreshold) {
+                        ageText += ' (extra charge + age surcharge)';
+                    } else if (overCapacity) {
                         ageText += ' (extra charge)';
+                    } else if (overAgeThreshold) {
+                        ageText += ' (age surcharge)';
                     }
-                    
+
                     return ageText;
                 }).join(', ');
             }
@@ -1930,7 +1976,7 @@
                     : bookingData.price * bookingData.nights;
                 
                 // Calculate total extras
-                const extraFees = bookingData.extraFees.extraChildren + bookingData.extraFees.pets;
+                const extraFees = bookingData.extraFees.extraChildren + bookingData.extraFees.olderChildren + bookingData.extraFees.pets;
                 
                 // Calculate subtotal
                 const subtotal = baseCost;
@@ -2136,8 +2182,49 @@
                 return re.test(email);
             }
             
-            // Initialize with first accommodation option selected
-            document.querySelector('.accommodation-option.selected').click();
+            // Pre-fill from a "Book Now" link on an accommodation page, if present
+            (function prefillFromQueryString() {
+                const params = new URLSearchParams(window.location.search);
+                const type = params.get('type');
+                const checkin = params.get('checkin');
+                const checkout = params.get('checkout');
+                const adults = params.get('adults');
+                const children = params.get('children');
+
+                let optionToSelect = document.querySelector('.accommodation-option.selected');
+                if (type) {
+                    const matchedOption = document.querySelector(`.accommodation-option[data-type="${CSS.escape(type)}"]`);
+                    if (matchedOption) {
+                        optionToSelect = matchedOption;
+                    }
+                }
+                optionToSelect.click();
+
+                if (checkin) {
+                    const checkinDate = new Date(checkin);
+                    if (!isNaN(checkinDate)) {
+                        checkinPicker.setDate(checkinDate, true);
+                    }
+                }
+                if (checkout) {
+                    const checkoutDate = new Date(checkout);
+                    if (!isNaN(checkoutDate)) {
+                        checkoutPicker.setDate(checkoutDate, true);
+                    }
+                }
+
+                if (adults && adultsSelect.querySelector(`option[value="${CSS.escape(adults)}"]`)) {
+                    adultsSelect.value = adults;
+                    adultsSelect.dispatchEvent(new Event('change'));
+                }
+                if (children && childrenSelect.querySelector(`option[value="${CSS.escape(children)}"]`)) {
+                    childrenSelect.value = children;
+                    childrenSelect.dispatchEvent(new Event('change'));
+                }
+
+                updateSummaries();
+                calculateTotal();
+            })();
         });
     </script>
 </body>

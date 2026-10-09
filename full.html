@@ -518,7 +518,78 @@
             font-weight: 400;
             color: var(--text-light);
         }
-        
+
+        /* Plan Your Stay Widget */
+        .stay-widget {
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .stay-widget .booking-form {
+            display: flex;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .stay-widget .booking-input {
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid var(--light-gray);
+            text-align: left;
+        }
+
+        .stay-widget .booking-input:last-of-type {
+            border-right: none;
+        }
+
+        .stay-widget .booking-input label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .stay-widget .booking-input input,
+        .stay-widget .booking-input select {
+            width: 100%;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            color: var(--text-color);
+            outline: none;
+        }
+
+        .stay-suggestion {
+            max-width: 900px;
+            margin: 20px auto 0;
+            padding: 15px 20px;
+            background-color: var(--white);
+            color: var(--text-color);
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .stay-suggestion a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .stay-widget .booking-form {
+                flex-direction: column;
+            }
+
+            .stay-widget .booking-input {
+                border-right: none;
+                border-bottom: 1px solid var(--light-gray);
+            }
+        }
+
         .btn-primary {
             background-color: var(--primary-color);
             color: var(--white);
@@ -787,6 +858,85 @@
         </div>
     </section>
 
+    <!-- Book Your Stay -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-subtitle">Book Your Stay</span>
+                <h2 class="section-title">Reserve The Entire Villa</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="stay-widget">
+                <div class="booking-form">
+                    <div class="booking-input">
+                        <label>Check In</label>
+                        <input type="text" class="datepicker datepicker-checkin" placeholder="Select Date">
+                    </div>
+                    <div class="booking-input">
+                        <label>Check Out</label>
+                        <input type="text" class="datepicker datepicker-checkout" placeholder="Select Date">
+                    </div>
+                    <div class="booking-input">
+                        <label>Adults</label>
+                        <select class="stay-adults">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6" selected>6</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="booking-input">
+                        <label>Children (0-14)</label>
+                        <select class="stay-children">
+                            <option value="0" selected>0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="stay-suggestion" hidden></div>
+
+            <div class="booking-content">
+                <p>Book the entire villa for your group and enjoy complete privacy with exclusive use of all facilities. Perfect for family reunions, corporate retreats, or celebrating special occasions.</p>
+
+                <div class="booking-options">
+                    <div class="booking-option">
+                        <h3>Nightly Rate</h3>
+                        <div class="price">$250 <span>per night</span></div>
+                        <p>Exclusive use of the entire villa property.</p>
+                        <ul>
+                            <li>6 Bedrooms & bathrooms</li>
+                            <li>Accommodates up to 12 adults</li>
+                            <li>Up to 6 children (extra charge)</li>
+                        </ul>
+                        <a id="book-nightly-link" href="booking.html?type=entire-villa-nightly&price=250&title=Entire%20Villa%20-%20Nightly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+                    </div>
+
+                    <div class="booking-option">
+                        <h3>Weekly Stay</h3>
+                        <div class="price">$1,950 <span>per week</span></div>
+                        <p>Save when you book a full week and fully immerse in the coastal lifestyle.</p>
+                        <ul>
+                            <li>7 nights exclusive accommodation</li>
+                            <li>Welcome package included</li>
+                            <li>Mid-week cleaning service</li>
+                        </ul>
+                        <a id="book-weekly-link" href="booking.html?type=entire-villa-weekly&price=1950&title=Entire%20Villa%20-%20Weekly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Villa Overview -->
     <section class="villa-overview">
         <div class="container">
@@ -943,47 +1093,6 @@
     </section>
 
     <!-- Booking Section -->
-    <section class="booking-section" id="booking">
-        <div class="container">
-            <div class="section-header light">
-                <span class="section-subtitle">Book Your Stay</span>
-                <h2 class="section-title">Reserve The Entire Villa</h2>
-                <div class="header-line"></div>
-            </div>
-            
-            <div class="booking-content">
-                <p>Book the entire villa for your group and enjoy complete privacy with exclusive use of all facilities. Perfect for family reunions, corporate retreats, or celebrating special occasions.</p>
-                
-                <div class="booking-options">
-                    <div class="booking-option">
-                        <h3>Nightly Rate</h3>
-                        <div class="price">$250 <span>per night</span></div>
-                        <p>Exclusive use of the entire villa property.</p>
-                        <ul>
-                            <li>6 Bedrooms & bathrooms</li>
-                            <li>Accommodates up to 12 adults</li>
-                            <li>Up to 6 children (extra charge)</li>
-                        </ul>
-                        <a href="booking.html?type=entire-villa-nightly&price=320&title=Entire%20Villa%20-%20Nightly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
-                    </div>
-                    
-                    <div class="booking-option">
-                        <h3>Weekly Stay</h3>
-                        <div class="price">$1,950 <span>per week</span></div>
-                        <p>Save when you book a full week and fully immerse in the coastal lifestyle.</p>
-                        <ul>
-                            <li>7 nights exclusive accommodation</li>
-                            <li>Welcome package included</li>
-                            <li>Mid-week cleaning service</li>
-                        </ul>
-                        <!-- Update for Weekly Rate Button -->
-<a href="booking.html?type=entire-villa-weekly&price=1950&title=Entire%20Villa%20-%20Weekly%20Rate" class="btn-primary" style="margin-top: 20px;">Book Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <section class="faq-section" id="villa-faqs">
         <div class="container">
             <div class="section-header">
@@ -1213,6 +1322,12 @@
                 document.body.style.overflow = '';
             });
         });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="stay-widget.js"></script>
+    <script>
+        initStayWidget('entire-villa');
     </script>
 </body>
 </html>

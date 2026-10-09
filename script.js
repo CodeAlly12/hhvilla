@@ -228,13 +228,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// Maps the accommodation slugs from stay-widget.js's ACCOMMODATIONS to the
+// display names getAccommodationDescription() below switches on.
+const ACCOMMODATION_DISPLAY_NAMES = {
+    'garden-bungalows': 'Garden Bungalows',
+    'main-house': 'Main House',
+    'entire-villa': 'Entire Villa'
+};
+
+function toISODate(date) {
+    if (!date) return '';
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+}
+
 function initBookingSuggestion() {
     // Get the check availability button
     const checkAvailabilityBtn = document.querySelector('.check-availability');
-    
+
     // Only proceed if the button exists on the page
     if (!checkAvailabilityBtn) return;
-    
+
     // Add event listener to the button
     checkAvailabilityBtn.addEventListener('click', function() {
         // Get input values from the booking widget
@@ -242,50 +258,66 @@ function initBookingSuggestion() {
         const checkOutInput = document.querySelectorAll('.booking-input .datepicker')[1];
         const guestSelect = document.querySelectorAll('.booking-input select')[0];
         const childSelect = document.querySelectorAll('.booking-input select')[1];
-        
-        // Get the values from the inputs
-        const checkInDate = checkInInput ? checkInInput.value : '';
-        const checkOutDate = checkOutInput ? checkOutInput.value : '';
-        
+
+        // Read the actual selected Date objects from flatpickr (not the formatted
+        // display text) so they can be re-encoded as ISO dates for the target page.
+        const checkInDateObj = checkInInput && checkInInput._flatpickr ? checkInInput._flatpickr.selectedDates[0] : null;
+        const checkOutDateObj = checkOutInput && checkOutInput._flatpickr ? checkOutInput._flatpickr.selectedDates[0] : null;
+
         // Check if dates are selected
-        if (!checkInDate || !checkOutDate) {
+        if (!checkInDateObj || !checkOutDateObj) {
             alert('Please select both check-in and check-out dates.');
             return;
         }
-        
+
         // Get the selected guest option text
         const adultGuestsText = guestSelect ? guestSelect.options[guestSelect.selectedIndex].text : '0';
         const childGuestsText = childSelect ? childSelect.options[childSelect.selectedIndex].text : '0';
-        
+
         // Extract numbers from the text
         // For adults, extract the first number from strings like "2 Guests"
         const adultMatch = adultGuestsText.match(/\d+/);
         const numAdults = adultMatch ? parseInt(adultMatch[0]) : 0;
-        
+
         // For children, extract the number, handling the case where it's just a number
         const childMatch = childGuestsText.match(/\d+/);
         const numChildren = childMatch ? parseInt(childMatch[0]) : 0;
-        
-        // Calculate total guests
-        const totalGuests = numAdults + numChildren;
-        
-        // Determine the best accommodation option based on number of guests
+
+        // Determine the best accommodation using the same per-type adult/child
+        // capacity data as stay-widget.js and booking.html (loaded before this file).
         let recommendedAccommodation = '';
         let redirectUrl = '';
-        
-        if (totalGuests <= 2) {
-            recommendedAccommodation = 'Garden Bungalows';
-            redirectUrl = 'garden.html';
-        } else if (totalGuests <= 6) {
-            recommendedAccommodation = 'Main House';
-            redirectUrl = 'main.html';
+
+        if (typeof suggestAccommodation === 'function' && typeof ACCOMMODATIONS === 'object') {
+            const slug = suggestAccommodation(numAdults, numChildren);
+            recommendedAccommodation = ACCOMMODATION_DISPLAY_NAMES[slug];
+            redirectUrl = ACCOMMODATIONS[slug].pageUrl;
         } else {
-            recommendedAccommodation = 'Entire Villa';
-            redirectUrl = 'full.html';
+            // Fallback if stay-widget.js failed to load
+            const totalGuests = numAdults + numChildren;
+            if (totalGuests <= 2) {
+                recommendedAccommodation = 'Garden Bungalows';
+                redirectUrl = 'garden.html';
+            } else if (totalGuests <= 6) {
+                recommendedAccommodation = 'Main House';
+                redirectUrl = 'main.html';
+            } else {
+                recommendedAccommodation = 'Entire Villa';
+                redirectUrl = 'full.html';
+            }
         }
-        
+
+        // Carry the chosen dates and guest counts to the accommodation page so
+        // its stay widget arrives pre-filled instead of starting cold.
+        const params = new URLSearchParams();
+        params.set('checkin', toISODate(checkInDateObj));
+        params.set('checkout', toISODate(checkOutDateObj));
+        params.set('adults', numAdults);
+        params.set('children', numChildren);
+        redirectUrl += `?${params.toString()}`;
+
         // Show the recommendation modal
-        showRecommendationModal(recommendedAccommodation, totalGuests, redirectUrl);
+        showRecommendationModal(recommendedAccommodation, numAdults + numChildren, redirectUrl);
     });
 }
 
