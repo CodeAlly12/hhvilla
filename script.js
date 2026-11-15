@@ -509,7 +509,7 @@ function submitInquiry(event) {
     } else {
         // Send Email
         var emailSubject = encodeURIComponent('Website Inquiry: ' + subject);
-        var mailtoUrl = 'mailto:info@hhvilla.me?subject=' + emailSubject + '&body=' + encodeURIComponent(messageContent);
+        var mailtoUrl = 'mailto:info@dunesidehosts.com?subject=' + emailSubject + '&body=' + encodeURIComponent(messageContent);
         window.location.href = mailtoUrl;
     }
     
